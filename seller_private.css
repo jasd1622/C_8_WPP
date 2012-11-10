@@ -1,0 +1,31 @@
+#content{
+	width:98%;
+	margin:0 auto;
+}
+#sub_con{
+	width:220px;
+	margin-top:50px;
+
+}
+#sub_title{
+	margin:0 0 45px 35px;
+	font-size:18pt;
+
+}
+#sub_con table{
+	margin-left:18px;
+	width:180px;
+	border-collapse: collapse;
+	height:140px;
+}
+#sub_con table tr{
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
+}
+#sub_con table th a{
+	text-decoration: none;
+	color:black;
+	margin-left:10px;
+	font-size:13pt;
+	color:black;
+}
