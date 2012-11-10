@@ -88,6 +88,7 @@ input,button,textarea,select{*font-size:100%;}
 }
 /* -- footer -- */
 #footer { color:#000; text-align:center; padding: 20px;
+	clear:both;
 }
 
 
