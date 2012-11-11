@@ -1,3 +1,7 @@
+#main_con{
+	margin-left:200px;
+	text-align: right;
+}
 #main_con table{
 	border-collapse: collapse;
 	margin:0 auto;
@@ -15,8 +19,4 @@
 }
 .btn{
 	margin-top:30px;
-}
-#main_con{
-	margin-left:200px;
-	text-align: right;
 }
