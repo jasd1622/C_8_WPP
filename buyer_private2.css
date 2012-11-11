@@ -1,22 +1,36 @@
 #main_con{
-	margin-left:200px;
+	margin-left:230px;
 	text-align: right;
 }
 #main_con table{
 	border-collapse: collapse;
 	margin:0 auto;
-	width:620px;
+	width:630px;
+}
+#main_con table.table1 th, table.table2 th{
+	font-size:11pt;
+	height:27px;
+}
+#main_con table.table1 th, table.table2 th{
+	width:130px;
 }
 #main_con table th {
 	text-align: center;
 }
 #main_con table.table2{
 	margin-top:60px;
-	width:500px;
 }
 #pass{
-	width:360px;
+	width:180px;
+	height:18px;
+	margin-right:5px;
 }
-.btn{
+#btn{
 	margin-top:30px;
+	float:right;
+	margin-right:25px;
+}
+.btn1{
+	width:55px;
+	height:26px;
 }
