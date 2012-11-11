@@ -1,0 +1,14 @@
+#write{
+	font-size:17px;
+	margin-left:50px;
+}
+.text{
+	margin:20px 0 0 30px;
+	overflow: auto;
+}
+#ps2{
+	float:right;
+	margin: 15px 43px 0 0;
+	width:50px;
+	height:25px;
+}
