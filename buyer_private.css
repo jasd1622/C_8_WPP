@@ -1,11 +1,10 @@
 #content{
 	width:98%;
 	margin:0 auto;
-	margin-top:50px;
 }
 #sub_con{
 	width:220px;
-	float:left;
+	margin-top:50px;
 
 }
 #sub_title{
@@ -30,4 +29,3 @@
 	font-size:13pt;
 	color:black;
 }
-
