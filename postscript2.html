@@ -5,7 +5,7 @@
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="Main.css">	
 	<link rel="stylesheet" type="text/css" href="buyer_private.css">
-	<link rel="stylesheet" type="text/css" href="buyer_private2.css">
+	<link rel="stylesheet" type="text/css" href="postscript2.css">
 </head>
 <body>
 	<div id="wrap">
@@ -38,52 +38,20 @@
 				</div>
 				<table>
 					<tr>
-						<th><a href="">주문내역/쿠폰 확인</a></th>
+						<th><a href="">후기</a></th>
 					</tr>
 					<tr>
-						<th><a href="">개인정보 수정</a></th>
+						<th><a href="">칭찬 & 불만</a></th>
 					</tr>
 				</table>
 			</div>
 			<div id="main_con">
-					<table border="3" class="table1">
-					<tr>
-						<th>아이디</th>
-						<td></td>
-					</tr>
-					<tr>
-						<th>가게 주소</th>
-						<td></td>
-					</tr>
-					<tr>
-						<th>가게 전화번호</th>
-						<td></td>
-					</tr>
-				</table>
-				<table border="3" class="table2">
-					<tr>
-						<th>현재 비밀번호</th>
-						<td><input type="password" name="cu_pw" id="pass">
-							<b>현재 사용중인 비밀번호를 입력하시오.</b>
-						</td>
-					</tr>
-					<tr>
-						<th>새로운 비밀번호</th>
-						<td><input type="password" name="new_pw" id="pass">
-							<b>새로운 비밀번호를 4자~20자 사이로 입력해주세요.</b>
-						</td>
-					</tr>
-					<tr>
-						<th>비밀번호 확인</th>
-						<td><input type="password" name="new2_pw" id="pass">
-							<b>새롭게 사용할 비밀번호를 한 번 더 입력해주세요.</b>
-						</td>
-					</tr>
-				</table>
-				<div id="btn">
-					<input type="submit" value="수정" class="btn1">
-					<input type="button" value="취소" class="btn1">
+				<form action="">
+				<div id="write"><b>* 피자집을 선택하시고 칭찬 & 불만을 적어주세요 ^^</b>
+									<select name="pizza"></select>
 				</div>
+				<textarea cols="100" rows="10" name="postscript" class="text"></textarea><br/>
+				<input type="submit" name="postscript2" value="전송" id="ps2"/></form>
 			</div>				
 		</div>
 	<div id="footer">

@@ -1,0 +1,23 @@
+#main_con table{
+	border-collapse: collapse;
+	margin:0 auto;
+	width:630px;
+}
+#main_con table.table1 th,table.table2 th{
+	font-size:11pt;
+	height:27px;
+	width:130px;
+}
+#main_con table th {
+	text-align: center;
+}
+#main_con{
+	margin-left:230px;
+	text-align: right;
+}
+#coupons{
+	margin:60px 0 15px 25px;
+	font-size:15pt;
+	text-align: left;
+
+}
