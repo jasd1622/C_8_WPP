@@ -1,15 +1,15 @@
 #content{
 	width:98%;
 	margin:0 auto;
+	margin-top:50px;
 }
 #sub_con{
 	width:220px;
-	margin-top:50px;
 	float:left;
 
 }
 #sub_title{
-	margin:0 0 45px 35px;
+	margin:0 0 45px 30px;
 	font-size:18pt;
 
 }
@@ -29,9 +29,4 @@
 	margin-left:10px;
 	font-size:13pt;
 	color:black;
-}
-#main_con{
-	width:600px;
-	margin:0 auto;
-	margin-left:240px;
 }
