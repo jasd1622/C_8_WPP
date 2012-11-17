@@ -24,9 +24,9 @@
 		<div id="header">
 			<div id="navbar">
 				<ul>
-					<li><a href="menu.html">메뉴판</a></li>
-					<li><a href="basket.html">장바구니</a></li>
-					<li><a href="review.html">고객의 소리</a></li>
+					<li><a href="">메뉴판</a></li>
+					<li><a href="">장바구니</a></li>
+					<li><a href="">고객의 소리</a></li>
 				</ul>
 			</div>
 		</div>
@@ -37,10 +37,10 @@
 				</div>
 				<table>
 					<tr>
-						<th><a href="">주문내역/쿠폰 확인</a></th>
+						<th><a href="buyer_private1.html" class="section">주문내역/쿠폰 확인</a></th>
 					</tr>
 					<tr>
-						<th><a href="">개인정보 수정</a></th>
+						<th><a href="buyer_private2.html" class="section">개인정보 수정</a></th>
 					</tr>
 				</table>
 			</div>
@@ -57,3 +57,10 @@
 </div>
 </body>
 </html>
+<script type="text/javascript">
+$(function() {
+	$("th.section").mouseover(function() {
+		$(this).css("background", "#f8dff5");
+	});
+});
+</script>
