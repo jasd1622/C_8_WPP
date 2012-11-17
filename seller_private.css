@@ -1,10 +1,10 @@
 #content{
 	width:98%;
 	margin:0 auto;
-	margin-top:50px;
 }
 #sub_con{
 	width:220px;
+	margin-top:50px;
 	float:left;
 
 }
@@ -29,4 +29,9 @@
 	margin-left:10px;
 	font-size:13pt;
 	color:black;
+}
+#main_con{
+	width:600px;
+	margin:0 auto;
+	margin-left:240px;
 }
