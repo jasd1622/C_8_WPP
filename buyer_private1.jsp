@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="Main.css">	
+<link rel="stylesheet" type="text/css" href="buyer_private.css">
+<link rel="stylesheet" type="text/css" href="buyer_private1.css">
 </head>
 <body>
 <div id="wrap">
