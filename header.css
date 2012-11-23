@@ -15,8 +15,7 @@ legend{color:#000;}
 input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}
 input,button,textarea,select{*font-size:100%;}
 
-/*--layout--*/
-#wrap {	width:930px; margin:0px auto;}
+
 
 /*--log--*/
 #log { 
