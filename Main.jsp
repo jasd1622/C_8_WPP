@@ -4,42 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메인페이지</title>
-<link href="Main.css" rel="stylesheet">
+<title></title>
 </head>
 <body>
-	<div id="wrap">
-		<div id="log">
-			<a href="">로그인</a> |
-			<a href="">회원가입</a>
-		</div>
-		<div id="top">
-			<div id="logo"><h1>
-				<img src="pz.gif" alt="로고">
-			</h1></div>
-			<form action="">
-				<input type="text" name="searchbox" id="searchbox">
-				<input type="submit" value="Search" id="searchbt">
-			</form>
-		</div>
-		<div id="header">
-			<div id="navbar">
-				<ul>
-					<li><a href="">메뉴판</a></li>
-					<li><a href="">장바구니</a></li>
-					<li><a href="postscript1.html">고객의 소리</a></li>
-				</ul>
-			</div>
-		</div>
-		<div id="content">					
-		</div>
-	<hr/>
-	<div id="footer">
-		<p>사이트 소개 | 이용약관 | 개인정보취급방침 | 책임의 한계와 법적 고지 | 고객센터 </p>
-		<p>
-		Copyright © FANCAFE. All rights reserved.
-		</p>
+	<jsp:include page="header.jsp"/>
+	<div id="content">					
 	</div>
-</div>
+	<jsp:include page="footer.jsp"/>
 </body>
 </html>
