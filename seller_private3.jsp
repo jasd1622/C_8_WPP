@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="seller_private_1_3.css">
 </head>
 <body>
+<div id="wrap" style="width:930px; margin:0px auto;">
 	<jsp:include page="header.jsp"/>
 		<div id="content" style="width:98%;	margin:0 auto;margin-top:50px;">
 		<jsp:include page="seller_nav.jsp"/>
