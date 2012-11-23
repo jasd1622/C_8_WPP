@@ -8,7 +8,6 @@
 <link href="header.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div id="wrap">
 	<div id="log">
 		<a href="">로그인</a> |
 		<a href="">회원가입</a>
