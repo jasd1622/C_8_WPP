@@ -5,10 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>장바구니입니다.</title>
-<link href="CSS/basket.css" rel="stylesheet" type="text/css">
-<link href="CSS/Main.css" rel="stylesheet" type="text/css">
+<link href="basket.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div id="wrap" style="width:930px; margin:0px auto;">
 	<jsp:include page="header.jsp"/>
 	<div id="content">
 			<div class="center_content">
