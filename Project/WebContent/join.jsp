@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입입니다.</title>
-<link href="CSS/join.css" rel="stylesheet" type="text/css">
+<title>Insert title here</title>
+<link href="join.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div id="wrap" style="width:930px; margin:0px auto;">
 <jsp:include page="header.jsp"/>
 	<div id="content">		
 			<span class="head_content">
@@ -66,10 +67,9 @@
 	</table>
 
 	<h2>이용약관</h2>
-	<textarea name="policy" cols="120" rows="5" >약관에 보여지는 내용을 모두 동의하시면 '동의'를 눌러주세요.
+	<textarea name="policy" cols="120" rows="5" >aㄴ여하세요 저는 이은지입니다 우하하하하후하하하하하핳하우리는통합쿠폰제를실시합니다하하하으하하ㅏ흐아크크크ㅡㅋ캬캬ㅑ
 	</textarea>
-	
-	<input type="checkbox" value="agree"/><br/>약관에 동의합니다.
+	<input type="checkbox" value="agree"/>약관에 동의합니다.
 		<p class="center" >
 			<a href=""><img src="jo.gif" alt="회원가입"></a>
 			<a href=""><img src="ca.gif" alt="취소"></a>
@@ -77,5 +77,6 @@
 	</div>
 	</div>
 	<jsp:include page="footer.jsp"/>
+	</div>
 </body>
 </html>
