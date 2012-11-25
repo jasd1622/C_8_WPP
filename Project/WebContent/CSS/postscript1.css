@@ -1,0 +1,17 @@
+#main_con table{
+	border-collapse: collapse;
+	margin:0 auto;
+	width:630px;
+}
+#main_con table.table1 th{
+	font-size:11pt;
+	height:27px;
+	width:130px;
+	text-align: center;
+}
+#ps1{
+	float:right;
+	margin:40px 35px 0 0;
+	width:60px;
+	height:25px;
+}

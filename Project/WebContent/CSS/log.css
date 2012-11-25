@@ -1,0 +1,10 @@
+#content { overflow:auto; margin:50px;}
+.center_content{margin:0 auto;width:720px;margin:40px;}
+.t2{
+	border: 0;border-collapse:collapse;
+	border-spacing:20px;
+	width:400px;height:100px;
+}
+
+#left{float:left;width: 250px; margin: 10px 10px 0 0;}
+#right_top{margin:0 0 10px 10px;}
