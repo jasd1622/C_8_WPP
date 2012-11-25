@@ -1,5 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*" import="java.sql.*"%>
+<%String [] PhoneNum={"010","011","016","018","019"};%>
+<% 
+	Connection conn=null;
+	Statement stmt=null;
+	ResultSet rs=null;
+	
+	String dbUrl="jdbc:mysql://localhost:3306/wp";
+	String dbUser="jasd1622";
+	String dbPassword="asd1622";
+	String actionUrl;
+	
+	String userid="";
+	String pwd="";
+	String name="";
+	String address="";
+	String phone="";
+	
+	actionUrl="register.jsp";
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +27,8 @@
 <link href="join.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<jsp:include page="header.jsp"/>
+<div id="wrap" style="width:930px; margin:0px auto;">
+<jsp:include page="header.jsp"></jsp:include>
 	<div id="content">		
 			<span class="head_content">
 				<h1>회원가입(구매자)</h1>
@@ -49,33 +69,37 @@
 			<tr>
 				<th>휴대전화</th>
 				<td>
-					<select name="phone">
-					<option value="010">010</option>
-					<option value="011">011</option>
-					<option value="016">016</option>
-					<option value="017">017</option>
-					<option value="018">018</option>
-					<option value="019">019</option>
-					</select><span>-</span>
-					<input type="text" class="txt"/>
+					<span><select name="phone">
+					<%
+					for(String phonenum:PhoneNum){
+						out.print("<option");
+						if(phonenum.equals(PhoneNum)){
+							out.print(" checked");
+						}
+						out.println(">"+phonenum+"</option>");	
+					}
+					%>
+					</select>
+					</span>
 					<span>-</span>
-					<input type="text" class="txt"/>
+					<input type="text" class="txt" name="phone2"/>
+					<span>-</span>
+					<input type="text" class="txt" name="phone3"/>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-
 	<h2>이용약관</h2>
-	<textarea name="policy" cols="120" rows="5" >aㄴ여하세요 저는 이은지입니다 우하하하하후하하하하하핳하우리는통합쿠폰제를실시합니다하하하으하하ㅏ흐아크크크ㅡㅋ캬캬ㅑ
-	</textarea>
-	<input type="checkbox" value="agree"/>약관에 동의합니다.
+	<div style="margin-bottom:5px"><textarea name="policy" cols="120" rows="5" >aㄴ여하세요 저는 이은지입니다 우하하하하후하하하하하핳하우리는통합쿠폰제를실시합니다하하하으하하ㅏ흐아크크크ㅡㅋ캬캬ㅑ
+	</textarea></div>
+	<input type="checkbox" value="agree"/> 약관에 동의합니다.
 		<p class="center" >
 			<a href=""><img src="jo.gif" alt="회원가입"></a>
 			<a href=""><img src="ca.gif" alt="취소"></a>
 		</p>		
 	</div>
 	</div>
-	<jsp:include page="footer.jsp"/>
+	<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>
