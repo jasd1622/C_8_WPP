@@ -9,6 +9,7 @@
 <link href="Main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div id="wrap" style="width:930px; margin:0px auto;">
 	<jsp:include page="header.jsp"/>
 	<div id="content">
 			<div class="center_content">
