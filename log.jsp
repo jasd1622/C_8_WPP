@@ -8,8 +8,9 @@
 <link href="log.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<jsp:include page="header.jsp"/>
-	<div id="content">	
+<div id="wrap" style="width:930px; margin:0px auto;">
+	<jsp:include page="header.jsp"></jsp:include>
+	<div id="content">
 			<span class="head_content">
 			<h1>로그인</h1>
 			</span>
@@ -21,7 +22,7 @@
 				<h2>우리 피자 홈페이지에 오신 것을 환영합니다.</h2>
 				아이디와 비밀번호를 입력하신 후 '로그인' 버튼을 클릭해 주세요.<br/>	
 			</div>
-			<table border="0">
+			<table>
 				<tbody>
 				<tr>
 					<th>아 이 디</th>
@@ -42,7 +43,7 @@
 		</table>
 			</div>		
 	</div>
-	<jsp:include page="footer.jsp"/>
+	<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>
