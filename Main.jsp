@@ -7,9 +7,11 @@
 <title></title>
 </head>
 <body>
+<div id="wrap" style="width:930px; margin:0px auto;">
 	<jsp:include page="header.jsp"/>
 	<div id="content">					
 	</div>
 	<jsp:include page="footer.jsp"/>
+		</div>
 </body>
 </html>
