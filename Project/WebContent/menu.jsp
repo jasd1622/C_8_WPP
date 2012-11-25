@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메뉴판입니다.</title>
-<link href="CSS/menu.css" rel="stylesheet" type="text/css">
+<title>Insert title here</title>
+<link href="menu.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div id="wrap" style="width:930px; margin:0px auto;">
 	<jsp:include page="header.jsp"/>
 	<div id="content">	
 			<div class="center_content">
@@ -64,5 +65,6 @@
 		</div>
 	<hr/>			
 	<jsp:include page="footer.jsp"/>
+		</div>
 </body>
 </html>
