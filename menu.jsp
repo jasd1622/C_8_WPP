@@ -8,7 +8,8 @@
 <link href="menu.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<jsp:include page="header.jsp"/>
+<div id="wrap" style="width:930px; margin:0px auto;">
+	<jsp:include page="header.jsp"></jsp:include>
 	<div id="content">	
 			<div class="center_content">
 				<span id="order">
@@ -63,7 +64,7 @@
 		</div>
 		</div>
 	<hr/>			
-	<jsp:include page="footer.jsp"/>
+	<jsp:include page="footer.jsp"></jsp:include>
 		</div>
 </body>
 </html>
