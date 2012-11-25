@@ -68,7 +68,7 @@
 
 	<h2>이용약관</h2>
 	<textarea name="policy" cols="120" rows="5" >aㄴ여하세요 저는 이은지입니다 우하하하하후하하하하하핳하우리는통합쿠폰제를실시합니다하하하으하하ㅏ흐아크크크ㅡㅋ캬캬ㅑ
-	</textarea>
+	</textarea></br>
 	<input type="checkbox" value="agree"/>약관에 동의합니다.
 		<p class="center" >
 			<a href=""><img src="jo.gif" alt="회원가입"></a>
