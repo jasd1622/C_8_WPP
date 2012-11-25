@@ -1,5 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.sql.*" imort="java.util.*"
+    import="org.apache.commons.lang3.StringUtils"%>
+<% 
+	Connection conn=null;
+	PreparedStatement stmt=null;
+	ResultSet rs=null;
+	
+	String dbUrl="jdbc:mysql://localhost:3306/wp";
+	String dbUser="jasd1622";
+	String dbPassword="asd1622";
+	
+	request.setCharacterEncoding("utf-8");
+	
+	int id=0;
+	try{
+		id=Integer.parseInt(request.getParameter("id"));
+	}catch(Exception e){
+		String userid=request.getParameter("id");
+		String name=request.getParameter("name");
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +29,7 @@
 </head>
 <body>
 <div id="wrap" style="width:930px; margin:0px auto;">
-<jsp:include page="header.jsp"/>
+<jsp:include page="header.jsp"></jsp:include>
 		<div id="content" style="width:98%;	margin:0 auto;margin-top:50px;">
 			<jsp:include page="buyer_nav.jsp"/>
 			<div id="main_con">
@@ -53,7 +73,7 @@
 				</div>
 			</div>				
 		</div>
-		<jsp:include page="footer.jsp"/>
+		<jsp:include page="footer.jsp"></jsp:include>
 </div>
 
 </body>
