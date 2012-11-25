@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>환영합니다!</title>
 </head>
 <body>
-<div id="wrap" style="width:930px; margin:0px auto;">
-	<jsp:include page="header.jsp"/>
-	<div id="content">					
-	</div>
-	<jsp:include page="footer.jsp"/>
+	
+		<jsp:include page="header.jsp"/>
+		<div id="content">					
 		</div>
+		<jsp:include page="footer.jsp"/>
+	
 </body>
 </html>

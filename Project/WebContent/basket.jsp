@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link href="basket.css" rel="stylesheet" type="text/css">
-<link href="Main.css" rel="stylesheet" type="text/css">
+<title>장바구니입니다.</title>
+<link href="CSS/basket.css" rel="stylesheet" type="text/css">
+<link href="CSS/Main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<jsp:include page="header.jsp"/>
@@ -45,6 +45,5 @@
 			</div>
 	</div>
 	<jsp:include page="footer.jsp"/>
-	</div>
 </body>
 </html>

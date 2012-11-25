@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link href="menu.css" rel="stylesheet" type="text/css">
+<title>메뉴판입니다.</title>
+<link href="CSS/menu.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<jsp:include page="header.jsp"/>
@@ -64,6 +64,5 @@
 		</div>
 	<hr/>			
 	<jsp:include page="footer.jsp"/>
-		</div>
 </body>
 </html>
