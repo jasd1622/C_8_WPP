@@ -4,13 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>장바구니입니다.</title>
 <link href="basket.css" rel="stylesheet" type="text/css">
-<link href="Main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="wrap" style="width:930px; margin:0px auto;">
-	<jsp:include page="header.jsp"/>
+	<jsp:include page="header.jsp"></jsp:include>
 	<div id="content">
 			<div class="center_content">
 			<table class="t">
@@ -45,7 +44,7 @@
 			<input type="button" value="삭제" id="del">		
 			</div>
 	</div>
-	<jsp:include page="footer.jsp"/>
+	<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 </body>
 </html>
