@@ -83,20 +83,24 @@
 		out.print("<div class='alert'>" + errorMsg + "</div>");
  }
  %>	
-			<span class="head_content">
+  <form class="form-horizontal" action="<%=actionUrl%>" method="post">
+		<span class="head_content">
 				<h1>회원가입(구매자)</h1>
-			</span>
-			<div class="center_content">
+		</span>
+		<div class="center_content">
 			<%
 			  	if (id > 0) {
 			  		out.println("<input type='hidden' name='userid' value='"+id+"'>");
 			  	}
-			  	%>
+	  	%>
 	<table class="t">
 		<tbody>
 			<tr>
 				<th class="rb">아이디</th>
-				<td><input type="text" name="userid"  maxlength="12"/>
+				<td class="control-group">
+					<span class="controls">
+						<input type="text" name="userid" value="<%=userid%>">
+					</span>
 					<input type="button" value="중복조회" class="button"/>
 					<span>* 6~12자의 영문/숫자만 가능</span>
 				</td>
@@ -104,12 +108,15 @@
 			<% if (id <= 0) { %>
 			<tr>
 				<th>비밀번호</th>
-				<td><input type="password" name="pwd"/>
+				<td class="control-group">
+					<span class="controls"><input type="password" name="pwd"/></span>
 				<span>* 6~12자의 영문/숫자만 가능</span></td>
 			</tr>
 			<tr>
 				<th>비밀번호 확인</th>
-				<td><input type="password" name="pwd2" /></td>
+				<td class="control-group">
+					<span class="controls"><input type="password" name="pwd2"/></span>
+				</td>
 			</tr>
 			<% } %>
 			<tr>
@@ -122,14 +129,17 @@
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td class="control-group">
+					<span class="controls">
 					<input type="text" name="add" style="width:386px" value="<%=address %>"/>
+					</span>
 				</td>
 			</tr>
 			<tr>
 				<th>휴대전화</th>
-				<td>
-					<span><select name="phone">
+				<td class="control-group">
+					<span class="controls">
+					<select name="phone">
 					<%
 					for(String pnum:phones){
 						out.print("<option");
@@ -153,15 +163,18 @@
 	<div style="margin-bottom:5px"><textarea name="policy" cols="120" rows="5" >aㄴ여하세요 저는 이은지입니다 우하하하하후하하하하하핳하우리는통합쿠폰제를실시합니다하하하으하하ㅏ흐아크크크ㅡㅋ캬캬ㅑ
 	</textarea></div>
 	<input type="checkbox" value="agree"/> 약관에 동의합니다.
-		<p class="center" >
-		<% if (id <= 0) { %>
-			<input type="submit" class="btn btn-primary" value="가입">
-			<input type="submit" class="btn btn-primary" value="취소">
-			<% } else { %>
-			<input type="submit" class="btn btn-primary" value="수정">
+	
+		<p class="center">
+				<div class="form-actions">
+					<a href="index.jsp" class="btn">목록으로</a>
+					<% if (id <= 0) { %>
+						<input type="submit" class="btn btn-primary" value="가입">
+					<% } else { %>
+						<input type="submit" class="btn btn-primary" value="수정">
 					<% } %>
-		</p>		
-	</div>
+				</div>
+				
+		  </form>
 	</div>
 	<jsp:include page="footer.jsp"></jsp:include>
 	</div>
