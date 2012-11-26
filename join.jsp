@@ -1,24 +1,71 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*" import="java.sql.*"%>
-<%String [] PhoneNum={"010","011","016","018","019"};%>
-<% 
-	Connection conn=null;
-	Statement stmt=null;
-	ResultSet rs=null;
-	
-	String dbUrl="jdbc:mysql://localhost:3306/wp";
-	String dbUser="jasd1622";
-	String dbPassword="asd1622";
+    pageEncoding="UTF-8" import="java.util.*"  import="java.sql.*" 
+		import="org.apache.commons.lang3.StringUtils"%>
+<%
+	String[] phones = {"010", "011", "016", "018", "019"};
+	String errorMsg = null;
+
 	String actionUrl;
-	
-	String userid="";
-	String pwd="";
-	String name="";
-	String address="";
+	// DB 접속을 위한 준비
+	Connection conn = null;
+	PreparedStatement stmt = null;
+	ResultSet rs = null;
+
+	String dbUrl = "jdbc:mysql://localhost:3306/wp_test";
+	String dbUser = "slaej1228";
+	String dbPassword = "tiger";
+
+	// 사용자 정보를 위한 변수 초기화
+	String userid = "";
+	String pwd = "";
+	String address = "";
 	String phone="";
-	
-	actionUrl="register.jsp";
-%>
+	String phone2 = "";
+	String phone3 = "";
+
+	// Request로 ID가 있는지 확인
+	int id = 0;
+	try {
+		id = Integer.parseInt(request.getParameter("id"));
+	} catch (Exception e) {}
+
+	if (id > 0) {
+		// Request에 id가 있으면 update모드라 가정
+		actionUrl = "update.jsp";
+		try {
+		    Class.forName("com.mysql.jdbc.Driver");
+
+		    // DB 접속
+			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+
+	 		// 질의 준비
+			stmt = conn.prepareStatement("SELECT * FROM users WHERE id = ?");
+			stmt.setInt(1, id);
+
+			// 수행
+	 		rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				userid = rs.getString("userid");
+				pwd = rs.getString("pwd");
+				address = rs.getString("add");
+				phone = rs.getString("phone");
+				phone2 = rs.getString("phone2");
+				phone3 = rs.getString("phone3");
+				
+			}
+		}catch (SQLException e) {
+			errorMsg = "SQL 에러: " + e.getMessage();
+		} finally {
+			// 무슨 일이 있어도 리소스를 제대로 종료
+			if (rs != null) try{rs.close();} catch(SQLException e) {}
+			if (stmt != null) try{stmt.close();} catch(SQLException e) {}
+			if (conn != null) try{conn.close();} catch(SQLException e) {}
+		}
+	} else {
+		actionUrl = "register.jsp";
+	}
+%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,20 +76,32 @@
 <body>
 <div id="wrap" style="width:930px; margin:0px auto;">
 <jsp:include page="header.jsp"></jsp:include>
-	<div id="content">		
+	<div id="content">	
+	<%
+ if (errorMsg != null && errorMsg.length() > 0 ) {
+		// SQL 에러의 경우 에러 메시지 출력
+		out.print("<div class='alert'>" + errorMsg + "</div>");
+ }
+ %>	
 			<span class="head_content">
 				<h1>회원가입(구매자)</h1>
 			</span>
 			<div class="center_content">
+			<%
+			  	if (id > 0) {
+			  		out.println("<input type='hidden' name='id' value='"+id+"'>");
+			  	}
+			  	%>
 	<table class="t">
 		<tbody>
 			<tr>
 				<th class="rb">아이디</th>
-				<td><input type="text" name="id"  maxlength="12"/>
+				<td><input type="text" name="id"  maxlength="12" value="<%=userid%>"/>
 					<input type="button" value="중복조회" class="button"/>
 					<span>* 6~12자의 영문/숫자만 가능</span>
 				</td>
 			</tr>
+			<% if (id <= 0) { %>
 			<tr>
 				<th>비밀번호</th>
 				<td><input type="password" name="pwd"/>
@@ -52,6 +111,7 @@
 				<th>비밀번호 확인</th>
 				<td><input type="password" name="pwd2" /></td>
 			</tr>
+			<% } %>
 			<tr>
 				<th rowspan="2">주소</th>
 				<td>
@@ -63,7 +123,7 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="text" name="add" style="width:386px"/>
+					<input type="text" name="add" style="width:386px" value="<%=address %>"/>
 				</td>
 			</tr>
 			<tr>
@@ -71,20 +131,20 @@
 				<td>
 					<span><select name="phone">
 					<%
-					for(String phonenum:PhoneNum){
+					for(String pnum:phones){
 						out.print("<option");
-						if(phonenum.equals(PhoneNum)){
-							out.print(" checked");
+						if(pnum.equals(phone)){
+							out.print(" selected");
 						}
-						out.println(">"+phonenum+"</option>");	
+						out.println(">"+pnum+"</option>");	
 					}
 					%>
 					</select>
 					</span>
 					<span>-</span>
-					<input type="text" class="txt" name="phone2"/>
+					<input type="text" class="txt" name="phone2" value="<%=phone2 %>"/>
 					<span>-</span>
-					<input type="text" class="txt" name="phone3"/>
+					<input type="text" class="txt" name="phone3" value="<%=phone3 %>"/>
 				</td>
 			</tr>
 		</tbody>
@@ -94,8 +154,12 @@
 	</textarea></div>
 	<input type="checkbox" value="agree"/> 약관에 동의합니다.
 		<p class="center" >
-			<a href=""><img src="jo.gif" alt="회원가입"></a>
-			<a href=""><img src="ca.gif" alt="취소"></a>
+		<% if (id <= 0) { %>
+			<input type="submit" class="btn btn-primary" value="가입">
+			<input type="submit" class="btn btn-primary" value="취소">
+			<% } else { %>
+			<input type="submit" class="btn btn-primary" value="수정">
+					<% } %>
 		</p>		
 	</div>
 	</div>
