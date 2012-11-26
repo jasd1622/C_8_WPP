@@ -34,7 +34,7 @@
 	if(phone==null){
 		errorMsgs.add("핸드폰 번호를 입력해주세요.");
 	}
-	if(phone.length()!=0){
+	if(phone!=null){
 		if(phone2.length()!=4){
 			errorMsgs.add("핸드폰 압의 4자리를 다시 입력해주세요.");
 		}
@@ -57,14 +57,14 @@
 		result=stmt.executeUpdate();
 		if(result!=1){errorMsgs.add("등록에 실패하였습니다.");}
 		
-		catch(SQLException e){
+		}catch(SQLException e){
 			errorMsgs.add("SQL 에러"+e.getMassage());
 		}finally{
 			if(rs!=null)try{rs.close();}catch(SQLException e){}
 			if(stmt!=null)try{stmt.close();}catch(SQLException e){}
 			if(conn!=null)try{conn.close();}catch(SQLException e){}
 		}
-		}
+
 %>
 <!DOCTYPE html>
 <html>
@@ -76,7 +76,7 @@
 <div id="wrap" style="width:930px; margin:0px auto;">
 	<jsp:include page="header.jsp"/>
 	<div id="content">
-	<%if(errorMsgs.size()>0)%>
+	<%if(errorMsgs.size()>0){%>
 	<div class="alert alert_error">
 		<h3>Errors:</h3>
 		<ul>
@@ -85,17 +85,18 @@
 			<% } %>
 			</ul>
 	</div>
+
 	<div class="form-action">
 	<a onclick="history.back();" class="btn">뒤로 돌아가기</a>
 	</div>
-	<% if(result==1){ %>
+	<% } else if(result==1){ %>
 	<div class="alert alert-success">
-	<b><%=name %></b>님 등록해주셔서 감사합니다.
+	<b><%=id %></b>님 등록해주셔서 감사합니다.
 	</div>
 	<div class="form-action">
 	<a href="Main.jsp" class="btn">목록으로</a>
 	</div>
-	<%} %>
+	<% } %>
 	</div>
 	<jsp:include page="footer.jsp"/>
 </div>
