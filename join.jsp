@@ -49,7 +49,7 @@
 				userid = rs.getString("userid");
 				pwd = rs.getString("pwd");
 				address = rs.getString("add");
-				phone = rs.getString("phone");
+				phone = rs.getString("phone"+"phone2"+"phone3");
 				phone2 = rs.getString("phone2");
 				phone3 = rs.getString("phone3");
 				
@@ -89,14 +89,14 @@
 			<div class="center_content">
 			<%
 			  	if (id > 0) {
-			  		out.println("<input type='hidden' name='id' value='"+id+"'>");
+			  		out.println("<input type='hidden' name='userid' value='"+id+"'>");
 			  	}
 			  	%>
 	<table class="t">
 		<tbody>
 			<tr>
 				<th class="rb">아이디</th>
-				<td><input type="text" name="id"  maxlength="12" value="<%=userid%>"/>
+				<td><input type="text" name="userid"  maxlength="12"/>
 					<input type="button" value="중복조회" class="button"/>
 					<span>* 6~12자의 영문/숫자만 가능</span>
 				</td>
