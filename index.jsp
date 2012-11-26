@@ -40,17 +40,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>회원목록</title>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/base.css" rel="stylesheet">
-	<script src="js/jquery-1.8.2.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
 </head>
 <body>
-<jsp:include page="share/header.jsp">
-  <jsp:param name="current" value="Sign Up"/>
-</jsp:include>
+<div id="wrap" style="width:930px; margin:0px auto;">
+<jsp:include page="header.jsp"></jsp:include>
 
-  <div class="container">
+  <div id="content">	
  	<%
  	try {
 	    Class.forName("com.mysql.jdbc.Driver");
@@ -87,32 +82,22 @@
 			<thead>
 				<tr>
 					<th>ID</th>
-					<th>Name</th>
-					<th>Email</th>
-					<th>Gender</th>
-					<th>Country</th>
+					<th>Address</th>
+					<th>PhoneNumber</th>
 					<th></th>
 				</tr>
 			</thead>
 			<tbody>
-			<%
-				while(rs.next()) {
-					gender = rs.getString("gender").equals("M") ? "남성":"여성";
-			%>
+			
 				<tr>
 					<td><a href="show.jsp?id=<%=rs.getInt("id")%>"><%=rs.getString("userid") %></a></td>
-					<td><%=rs.getString("name") %></td>
-					<td><%=rs.getString("email") %></td>
-					<td><%=gender %></td>
-					<td><%=rs.getString("country") %></td>
+					<td><%=rs.getString("add") %></td>
+					<td><%=rs.getString("phone") %></td>
 					<td>
-						<a href="signup.jsp?id=<%=rs.getInt("id")%>" class="btn btn-mini">modify</a>
+						<a href="join.jsp?id=<%=rs.getInt("id")%>" class="btn btn-mini">modify</a>
 						<a href="#" class="btn btn-mini btn-danger" data-action="delete" data-id="<%=rs.getInt("id") %>" >delete</a>
 					</td>
 				</tr>
-				<%
-				}
-			%>
 			</tbody>
 		</table> 
 
@@ -175,10 +160,10 @@
 		}
 		%>
 		<div class="form-action">
-			<a href="signup.jsp" class="btn btn-primary">Sign Up</a>
+			<a href="join.jsp" class="btn btn-primary">회원가입</a>
 		</div>	 	
   </div>
-<jsp:include page = "share/footer.jsp" />
+<jsp:include page = "footer.jsp" />
 </body>
 <script>
 $(function{
