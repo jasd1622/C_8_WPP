@@ -47,7 +47,7 @@
     	  userid = rs.getString("userid");
 				pwd = rs.getString("pwd");
 				address = rs.getString("add");
-				phone = rs.getString("phone");
+				phone = rs.getString("phone"+"phone2"+"phone3");
 				phone2 = rs.getString("phone2");
 				phone3 = rs.getString("phone3");
       }
