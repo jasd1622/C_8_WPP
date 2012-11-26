@@ -4,13 +4,14 @@
 	String errorMsg=null;
 	int result=0;
 	
-	Connection conn=null;
-	Statement stmt=null;
-	ResultSet rs=null;
+	// DB 접속을 위한 준비
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
 	
-	String dbUrl="jdbc:mysql://localhost:3306/wp";
-	String dbUser="jasd1622";
-	String dbPassword="asd1622";
+		String dbUrl = "jdbc:mysql://localhost:3306/wp_test";
+		String dbUser = "slaej1228";
+		String dbPassword = "tiger";
 	
 	request.setCharacterEncoding("utf-8");
 	
@@ -19,20 +20,18 @@
 		id=Integer.parseInt(request.getParameter("id"));
 	}catch(Exception e){}
 	try{
-		conn=DriverManager.getConnection(dbUrl,dbUser,dbPassword);
-		stmt=conn.prepareStatement("DELETE * FROM users WHERE id=?");
-		stmt.setInt(1,userid);
-		
-		result=stmt.executeUpdate;
-		if(result!=1){
-			errorMsg="삭제에 실패했습니다.";
-		}
-	}catch(SQLException e){
-		errorMsg="SQL 에러: "+ e.getMessage();
-	}finally{
-		if(rs!=null)try{rs.close();}catch(SQLException e){}
-		if(stmt!=null)try{stmt.close();}catch(SQLException e){}
-		if(conn!=null)try{conn.close();}catch(SQLException e){}
+			conn=DriverManager.getConnection(dbUrl,dbUser,dbPassword);
+			stmt=conn.prepareStatement("DELETE * FROM users WHERE id=?");
+			stmt.setInt(1,id);
+			
+			result = stmt.executeUpdate();
+			if(result!=1){ errorMsg="삭제에 실패했습니다.";}
+		}catch(SQLException e){
+			errorMsg="SQL 에러: "+ e.getMessage();
+		}finally{
+			if(rs!=null)try{rs.close();}catch(SQLException e){}
+			if(stmt!=null)try{stmt.close();}catch(SQLException e){}
+			if(conn!=null)try{conn.close();}catch(SQLException e){}
 		}
 %>
 <!DOCTYPE html>
