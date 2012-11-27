@@ -1,5 +1,32 @@
-#content { overflow:auto; margin:50px;}
-.center_content{margin:0 auto;width:720px;margin:40px;}
+#content { overflow:auto; margin:40px;}
+#write{
+	margin-left:50px;
+	margin-top:30px;
+	margin-bottom:40px;
+	font-size:23pt;
+	color:blue;
+}
+#center_content{margin:0 auto;width:770px;margin-bottom:20px;}
+#pic{
+	float:left;
+	margin-left:40px;
+	margin-right:40px;
+}
+#insert{
+	margin-top:40px;
+	font-size:15pt;
+	float:left;
+	width:275px;
+}
+#btn1{
+	padding-top:66px;
+}
+#href{
+	text-decoration:none;
+	margin:65px;
+	text-align:right;
+	font-size:11pt;
+}
 .t2{
 	border: 0;border-collapse:collapse;
 	border-spacing:20px;
