@@ -11,9 +11,9 @@
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 
-	String dbUrl = "jdbc:mysql://localhost:3306/wp_test";
-	String dbUser = "slaej1228";
-	String dbPassword = "tiger";
+	String dbUrl = "jdbc:mysql://localhost:3306/wp";
+	String dbUser = "root";
+	String dbPassword = "asd1622";
 
 	// 사용자 정보를 위한 변수 초기화
 	String userid = "";
@@ -23,6 +23,7 @@
 	String phone="";
 	String phone2 = "";
 	String phone3 = "";
+	String grade="1";
 
 	// Request로 ID가 있는지 확인
 	int id = 0;
@@ -51,13 +52,13 @@
 				shop = rs.getString("shop");
 				pwd = rs.getString("pwd");
 				address = rs.getString("add");
-				phone = rs.getString("phone"+"phone2"+"phone3");
+				phone = rs.getString("phone");
 				phone2 = rs.getString("phone2");
 				phone3 = rs.getString("phone3");
 				
 			}
 		}catch (SQLException e) {
-			errorMsg = "SQL 에러: " + e.getMessage();
+			errorMsg = "SQL 에러  :  " + e.getMessage();
 		} finally {
 			// 무슨 일이 있어도 리소스를 제대로 종료
 			if (rs != null) try{rs.close();} catch(SQLException e) {}
@@ -73,7 +74,7 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-	<link href="join.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="join.css">
 </head>
 <body>
 <div id="wrap" style="width:930px; margin:0px auto;">
