@@ -7,18 +7,20 @@
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 
-	String dbUrl = "jdbc:mysql://localhost:3306/wp_test";
-	String dbUser = "slaej1228";
-	String dbPassword = "tiger";
-	// +"phone2"+"phone3" 해야할까말아야할까!!!!!
+	String dbUrl = "jdbc:mysql://localhost:3306/wp";
+	String dbUser = "root";
+	String dbPassword = "asd1622";
+	
 	request.setCharacterEncoding("utf-8");
 	String userid=request.getParameter("userid");
 	String pwd=request.getParameter("pwd");
 	String pwd_conf=request.getParameter("pwd2");
+	String name=request.getParameter("name");
 	String address=request.getParameter("add");
-	String phone=request.getParameter("phone");
+	String phone1=request.getParameter("phone");
 	String phone2=request.getParameter("phone2");
 	String phone3=request.getParameter("phone3");
+	String phone_Num=phone1+phone2+phone3;
 	
 	List<String> errorMsgs= new ArrayList<String>();
 	int result=0;
@@ -32,30 +34,21 @@
 	if(!pwd.equals(pwd_conf)){
 		errorMsgs.add("비밀번호가 일치하지 않습니다.");
 	}
-	if(phone==null){
-		errorMsgs.add("핸드폰 번호를 입력해주세요.");
-	}
-	if(phone!=null){
-		if(phone2.length()!=4){
-			errorMsgs.add("핸드폰 앞의 4자리를 다시 입력해주세요.");
-		}
-		if(phone3.length()!=4){
-			errorMsgs.add("핸드폰 뒤의 4자리를 다시 입력해주세요.");
-		}
+	if(phone2.length()<3 || phone3.length()<3){
+			errorMsgs.add("핸드폰 번호를 다시 입력해주세요.");
 	}
 	if(errorMsgs.size()==0){
 		try{
+			Class.forName("com.mysql.jdbc.Driver");
 			conn=DriverManager.getConnection(dbUrl,dbUser,dbPassword);
 			stmt=conn.prepareStatement(
-					"INSERT INTO users(userid, pwd, address, phone, phone2, phone3)"+
-					"VALUES(?,?,?,?,?,?)"
+					"INSERT INTO users(id, pwd, address, phone)"+
+					"VALUES(?,?,?,?)"
 					);
 			stmt.setString(1,userid);
 			stmt.setString(2,pwd);
 			stmt.setString(3,address);
-			stmt.setString(4,phone);
-			stmt.setString(5,phone2);
-			stmt.setString(6,phone3);
+			stmt.setString(4,phone_Num);
 			
 			result = stmt.executeUpdate();
 			if (result != 1) {errorMsgs.add("등록에 실패하였습니다.");}
