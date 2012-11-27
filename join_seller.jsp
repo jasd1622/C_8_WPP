@@ -23,7 +23,7 @@
 	String phone="";
 	String phone2 = "";
 	String phone3 = "";
-	String grade="1";
+	String grade="";
 
 	// Request로 ID가 있는지 확인
 	int id = 0;
@@ -164,14 +164,13 @@
 					<span>-</span>
 					<input type="text" class="txt" name="phone3" value="<%=phone3 %>"/>
 				</td>
-			</tr>
 		</tbody>
 	</table>
 	<h2>이용약관</h2>
 		<div style="margin-bottom:5px"><textarea name="policy" cols="120" rows="5" >aㄴ여하세요 저는 이은지입니다 우하하하하후하하하하하핳하우리는통합쿠폰제를실시합니다하하하으하하ㅏ흐아크크크ㅡㅋ캬캬ㅑ
 		</textarea></div>
-		<input type="checkbox" value="agree"/> 약관에 동의합니다.
-		
+		<input type="checkbox" name="agree" value="agree"/> 약관에 동의합니다.
+		<input type="text" name="grade" value="1" style="display:hidden">
 			<p class="center">
 					<div class="form-actions">
 						<a href="index.jsp" class="btn">목록으로</a>
