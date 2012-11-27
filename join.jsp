@@ -11,9 +11,9 @@
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 
-	String dbUrl = "jdbc:mysql://localhost:3306/wp_test";
-	String dbUser = "slaej1228";
-	String dbPassword = "tiger";
+	String dbUrl = "jdbc:mysql://localhost:3306/wp";
+	String dbUser = "jasd1622";
+	String dbPassword = "asd1622";
 
 	// 사용자 정보를 위한 변수 초기화
 	String userid = "";
@@ -22,6 +22,7 @@
 	String phone="";
 	String phone2 = "";
 	String phone3 = "";
+	String grade="";
 
 	// Request로 ID가 있는지 확인
 	int id = 0;
@@ -49,7 +50,7 @@
 				userid = rs.getString("userid");
 				pwd = rs.getString("pwd");
 				address = rs.getString("add");
-				phone = rs.getString("phone"+"phone2"+"phone3");
+				phone = rs.getString("phone");
 				phone2 = rs.getString("phone2");
 				phone3 = rs.getString("phone3");
 				
@@ -150,9 +151,11 @@
 					}
 					%>
 					</select>
-					-	<input type="text" class="txt" name="phone2" value="<%=phone2 %>"/>
-					- <input type="text" class="txt" name="phone3" value="<%=phone3 %>"/>
-					</span>				
+					</span>
+					<span>-</span>
+					<input type="text" class="txt" name="phone2" value="<%=phone2 %>"/>
+					<span>-</span>
+					<input type="text" class="txt" name="phone3" value="<%=phone3 %>"/>
 				</td>
 			</tr>
 		</tbody>
