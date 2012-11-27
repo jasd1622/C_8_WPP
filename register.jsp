@@ -21,6 +21,7 @@
 	String phone2=request.getParameter("phone2");
 	String phone3=request.getParameter("phone3");
 	String phone_Num=phone1+phone2+phone3;
+	String grade=request.getParameter("grade");
 	
 	List<String> errorMsgs= new ArrayList<String>();
 	int result=0;
@@ -42,13 +43,14 @@
 			Class.forName("com.mysql.jdbc.Driver");
 			conn=DriverManager.getConnection(dbUrl,dbUser,dbPassword);
 			stmt=conn.prepareStatement(
-					"INSERT INTO users(id, pwd, address, phone)"+
-					"VALUES(?,?,?,?)"
+					"INSERT INTO users(id, pwd, address, phone, grade)"+
+					"VALUES(?,?,?,?,?)"
 					);
 			stmt.setString(1,userid);
 			stmt.setString(2,pwd);
 			stmt.setString(3,address);
 			stmt.setString(4,phone_Num);
+			stmt.setString(5,grade);
 			
 			result = stmt.executeUpdate();
 			if (result != 1) {errorMsgs.add("등록에 실패하였습니다.");}
