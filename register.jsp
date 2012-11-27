@@ -10,13 +10,13 @@
 	String dbUrl = "jdbc:mysql://localhost:3306/wp_test";
 	String dbUser = "slaej1228";
 	String dbPassword = "tiger";
-	
+	// +"phone2"+"phone3" 해야할까말아야할까!!!!!
 	request.setCharacterEncoding("utf-8");
 	String userid=request.getParameter("userid");
 	String pwd=request.getParameter("pwd");
 	String pwd_conf=request.getParameter("pwd2");
 	String address=request.getParameter("add");
-	String phone=request.getParameter("phone"+"phone2"+"phone3");
+	String phone=request.getParameter("phone");
 	String phone2=request.getParameter("phone2");
 	String phone3=request.getParameter("phone3");
 	

@@ -150,11 +150,9 @@
 					}
 					%>
 					</select>
-					</span>
-					<span>-</span>
-					<input type="text" class="txt" name="phone2" value="<%=phone2 %>"/>
-					<span>-</span>
-					<input type="text" class="txt" name="phone3" value="<%=phone3 %>"/>
+					-	<input type="text" class="txt" name="phone2" value="<%=phone2 %>"/>
+					- <input type="text" class="txt" name="phone3" value="<%=phone3 %>"/>
+					</span>				
 				</td>
 			</tr>
 		</tbody>
