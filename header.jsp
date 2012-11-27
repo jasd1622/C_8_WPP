@@ -17,8 +17,8 @@
 			<img src="pz.gif" alt="로고"/>
 		</h1></div>
 		<form action="">
-			<input type="text" name="searchbox" id="searchbox">
-			<input type="submit" value="Search" id="searchbt">
+			<input type="text" name="searchbox" id="searchbox"/>
+			<input type="submit" value="Search" id="searchbt"/>
 		</form>
 		</div>
 		<div id="header">
