@@ -2,6 +2,55 @@
     pageEncoding="UTF-8" import="java.util.*" import="java.sql.*"
     import="org.apache.commons.lang3.StringUtils"
 %>
+<%--<%
+	Connection conn=null;
+	Statement stmt=null;
+	ResultSet rs=null;
+	String errorMsg = null;
+	
+	String dbUrl="jdbc:mysql://localhost3306:wp";
+	String dbUser="jasd1622";
+	String dbPassword="asd1622";
+	
+	String userid="";
+	String userpwd="";
+	
+	if(request.getMethod=="POST"){
+		userid=request.getParameter("id");
+		userid=request.getParameter("pwd");
+	}
+	
+	int id = 0;
+	try {
+		id = Integer.parseInt(request.getParameter("id"));
+	} catch (Exception e) {
+		errorMsg = "SQL 에러  :  " + e.getMessage();
+	}
+
+	if (id > 0) {
+		try {
+		    Class.forName("com.mysql.jdbc.Driver");
+
+		    // DB 접속
+			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+
+			stmt = conn.createStatement();
+			// 수행
+	 		rs = stmt.executeQuery("SELECT * FROM users");
+
+			if (rs.next()) {
+				userid = rs.getString("id");
+				userpwd=rs.getString("pwd");
+				
+			}
+		}catch (SQLException e) {
+		} finally {
+			// 무슨 일이 있어도 리소스를 제대로 종료
+			if (rs != null) try{rs.close();} catch(SQLException e) {}
+			if (stmt != null) try{stmt.close();} catch(SQLException e) {}
+			if (conn != null) try{conn.close();} catch(SQLException e) {}
+		}
+%>--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,10 +66,13 @@
 				<div class="error">아이디와 비밀번호를 입력하세요.</div>
 		<%}else if(tempid.equals("jasd1622") && temppwd.equals("asd1622")){
 				session.setAttribute("id","jasd1622");
+				session.setAttribute("pwd","asd1622");
+				session.setAttribute("address","서울시 노원구");
+				session.setAttribute("phone","029716754");
 				response.sendRedirect("Main.jsp");
 		}else{
 				if(!tempid.equals("userid")){%>
-				<div class="error">아이디가 잘못되었습니다.</div>
+					<div class="error">아이디가 잘못되었습니다.</div>
 		<%}else{%>
 				<div class="error">비밀번호가 잘못되었습니다.</div>
 		<%}
