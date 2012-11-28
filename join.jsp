@@ -22,17 +22,14 @@
 	String phone="";
 	String phone2 = "";
 	String phone3 = "";
-	String grade="";
+	String grade="1";
 
 	// Request로 ID가 있는지 확인
 	int id = 0;
 	try {
 		id = Integer.parseInt(request.getParameter("id"));
 	} catch (Exception e) {}
-
-	if (id > 0) {
-		// Request에 id가 있으면 update모드라 가정
-		actionUrl = "update.jsp";
+	
 		try {
 		    Class.forName("com.mysql.jdbc.Driver");
 
@@ -43,18 +40,6 @@
 			stmt = conn.prepareStatement("SELECT * FROM users WHERE id = ?");
 			stmt.setInt(1, id);
 
-			// 수행
-	 		rs = stmt.executeQuery();
-
-			if (rs.next()) {
-				userid = rs.getString("userid");
-				pwd = rs.getString("pwd");
-				address = rs.getString("add");
-				phone = rs.getString("phone");
-				phone2 = rs.getString("phone2");
-				phone3 = rs.getString("phone3");
-				
-			}
 		}catch (SQLException e) {
 			errorMsg = "SQL 에러: " + e.getMessage();
 		} finally {
@@ -63,10 +48,9 @@
 			if (stmt != null) try{stmt.close();} catch(SQLException e) {}
 			if (conn != null) try{conn.close();} catch(SQLException e) {}
 		}
-	} else {
 		actionUrl = "register.jsp";
-	}
-%> 
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
