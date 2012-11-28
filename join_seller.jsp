@@ -2,7 +2,8 @@
     pageEncoding="UTF-8" import="java.util.*"  import="java.sql.*" 
 		import="org.apache.commons.lang3.StringUtils"%>
 <%
-	String[] phones = {"02", "031", "032", "033", "041", "042", "043", "044", "051", "052", "053", "054", "055", "061", "062", "063", "064"};
+	String[] seller_phones = {"02", "031", "032", "033", "041", "042", "043", "044", "051", "052", "053", "054", "055", "061", "062", "063", "064"};
+	String[] buyer_phones = {"010", "011", "016", "018", "019"};
 	String errorMsg = null;
 
 	String actionUrl;
@@ -23,7 +24,7 @@
 	String phone="";
 	String phone2 = "";
 	String phone3 = "";
-	String grade="";
+	String grade="0";
 
 	// Request로 ID가 있는지 확인
 	int id = 0;
@@ -31,9 +32,7 @@
 		id = Integer.parseInt(request.getParameter("id"));
 	} catch (Exception e) {}
 
-	if (id > 0) {
-		// Request에 id가 있으면 update모드라 가정
-		actionUrl = "update.jsp";
+	
 		try {
 		    Class.forName("com.mysql.jdbc.Driver");
 
@@ -48,13 +47,11 @@
 	 		rs = stmt.executeQuery();
 
 			if (rs.next()) {
-				userid = rs.getString("userid");
-				shop = rs.getString("shop");
+				userid = rs.getString("id");
+				shop = rs.getString("name");
 				pwd = rs.getString("pwd");
-				address = rs.getString("add");
+				address = rs.getString("address");
 				phone = rs.getString("phone");
-				phone2 = rs.getString("phone2");
-				phone3 = rs.getString("phone3");
 				
 			}
 		}catch (SQLException e) {
@@ -65,9 +62,7 @@
 			if (stmt != null) try{stmt.close();} catch(SQLException e) {}
 			if (conn != null) try{conn.close();} catch(SQLException e) {}
 		}
-	} else {
 		actionUrl = "register.jsp";
-	}
 %>
 <!DOCTYPE html>
 <html>
@@ -87,9 +82,9 @@
  }
  %>					
    <form class="form-horizontal" action="<%=actionUrl%>" method="post">
-		<span class="head_content">
+		<div class="head_content">
 				<h1>회원가입(판매자)</h1>
-			</span>
+			</div>
 			<div class="center_content">
 				<%
 			  	if (id > 0) {
@@ -102,7 +97,7 @@
 				<th class="rb">아이디</th>
 				<td class="control-group">
 					<span class="controls">
-						<input type="text" name="userid" value="<%=userid%>">
+						<input type="text" name="userid"/>
 					</span>
 					<input type="button" value="중복조회" class="button"/>
 					<span>* 6~12자의 영문/숫자만 가능</span>
@@ -110,7 +105,7 @@
 			</tr>
 			<tr>
 				<th>상호명</th>
-				<td class="control-group"><input type="text" name="name" value="<%=shop %>"/>
+				<td class="control-group"><input type="text" name="name"/>
 				</td>
 			</tr>
 			<% if (id <= 0) { %>
@@ -139,7 +134,7 @@
 			<tr>
 				<td class="control-group">
 					<span class="controls">
-					<input type="text" name="add" style="width:386px" value="<%=address %>"/>
+					<input type="text" name="add" style="width:386px"/>
 					</span>
 				</td>
 			</tr>
@@ -149,7 +144,7 @@
 					<span class="controls">
 					<select name="phone">
 					<%
-					for(String pnum:phones){
+					for(String pnum:seller_phones){
 						out.print("<option");
 						if(pnum.equals(phone)){
 							out.print(" selected");
@@ -160,9 +155,9 @@
 					</select>
 					</span>
 					<span>-</span>
-					<input type="text" class="txt" name="phone2" value="<%=phone2 %>"/>
+					<input type="text" class="txt" name="phone2""/>
 					<span>-</span>
-					<input type="text" class="txt" name="phone3" value="<%=phone3 %>"/>
+					<input type="text" class="txt" name="phone3""/>
 				</td>
 		</tbody>
 	</table>
@@ -170,7 +165,6 @@
 		<div style="margin-bottom:5px"><textarea name="policy" cols="120" rows="5" >aㄴ여하세요 저는 이은지입니다 우하하하하후하하하하하핳하우리는통합쿠폰제를실시합니다하하하으하하ㅏ흐아크크크ㅡㅋ캬캬ㅑ
 		</textarea></div>
 		<input type="checkbox" name="agree" value="agree"/> 약관에 동의합니다.
-		<input type="text" name="grade" value="1" style="display:hidden">
 			<p class="center">
 					<div class="form-actions">
 						<a href="index.jsp" class="btn">목록으로</a>
@@ -180,7 +174,6 @@
 							<input type="submit" class="btn btn-primary" value="수정">
 						<% } %>
 					</div>
-					
 			  </form>
 		</div>
 		<jsp:include page="footer.jsp"></jsp:include>
