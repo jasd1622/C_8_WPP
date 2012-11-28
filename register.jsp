@@ -21,7 +21,7 @@
 	String phone2=request.getParameter("phone2");
 	String phone3=request.getParameter("phone3");
 	String phone_Num=phone1+phone2+phone3;
-	String grade=request.getParameter("grade");
+	String grade="";
 	
 	List<String> errorMsgs= new ArrayList<String>();
 	int result=0;
@@ -29,14 +29,19 @@
 	if(userid==null  || userid.trim().length()==0){
 		errorMsgs.add("ID를 반드시 입력하시오.");
 	}
-	if(pwd==null || pwd.length()<6){
-		errorMsgs.add("비밀번호는 6자 이상 입력해주세요.");
+	if(pwd==null){
+		if(pwd==null || pwd.length()<6){
+			errorMsgs.add("비밀번호는 6자 이상 입력해주세요.");
+		}
 	}
 	if(!pwd.equals(pwd_conf)){
 		errorMsgs.add("비밀번호가 일치하지 않습니다.");
 	}
-	if(phone2.length()<3 || phone3.length()<3){
-			errorMsgs.add("핸드폰 번호를 다시 입력해주세요.");
+	if(phone2.length()==0 && phone3.length()==0){
+		errorMsgs.add("전화번호를 입력해주세요");
+	}
+	if((phone2.length()<3 && phone2.length()>0) || (phone3.length()<3 && phone3.length()>0)){
+			errorMsgs.add("전화번호를 다시 입력해주세요.");
 	}
 	if(errorMsgs.size()==0){
 		try{
