@@ -7,56 +7,54 @@
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 
-	String dbUrl = "jdbc:mysql://localhost:3306/wp_test";
-	String dbUser = "slaej1228";
-	String dbPassword = "tiger";
+	String dbUrl = "jdbc:mysql://localhost:3306/wp";
+	String dbUser = "root";
+	String dbPassword = "asd1622";
 
 	request.setCharacterEncoding("utf-8");
-
-	// Request로 ID가 있는지 확인
-	int id = 0;
-	try {
-		id = Integer.parseInt(request.getParameter("id"));
-	} catch (Exception e) {}
-	String userid = request.getParameter("userid");
-	String pwd=request.getParameter("pwd");
-	String pwd_conf=request.getParameter("pwd2");
-	String address=request.getParameter("add");
-	String phone=request.getParameter("phone"+"phone2"+"phone3");
-	String phone2=request.getParameter("phone2");
-	String phone3=request.getParameter("phone3");
+	String n_add=request.getParameter("address");
+	String n_phone=request.getParameter("phone");
+	String pwd=request.getParameter("cu_pw");
+	String n_pwd=request.getParameter("new_pw");
+	String n_pwd_conf=request.getParameter("new2_pw");
+	String userid=(String)session.getAttribute("id");
+	String userpwd=(String)session.getAttribute("pwd");
 
 	List<String> errorMsgs = new ArrayList<String>();
-	int result = 0;
-
-	if (userid == null || userid.trim().length() == 0) {
-		errorMsgs.add("ID를 반드시 입력해주세요.");
-	}
+	int result=0;
 	
-	if(phone==null){
-		errorMsgs.add("핸드폰 번호를 입력해주세요.");
+	if(n_add==null  || n_add.trim().length()==0){
+		errorMsgs.add("주소를 입력해주세요.");
 	}
-	if(phone!=null){
-		if(phone2.length()!=4){
-			errorMsgs.add("핸드폰 압의 4자리를 다시 입력해주세요.");
+	if(n_phone==null  || n_phone.trim().length()==0){
+		errorMsgs.add("번호를 입력해주세요.");
+	}
+	if(!userpwd.equals(pwd)){
+		errorMsgs.add("현재 비밀번호가 일치하지 않습니다.");
+	}
+	if(userpwd.equals(pwd)){
+		if(pwd.equals(n_pwd)){
+			errorMsgs.add("기존 비밀번호와 새로운 비밀번호가 같습니다.");
 		}
-		if(phone3.length()!=4){
-			errorMsgs.add("핸드폰 뒤의 4자리를 다시 입력해주세요.");
+	}
+	if(!pwd.equals(n_pwd)){
+		if(!n_pwd.equals(n_pwd_conf)){
+			errorMsgs.add("비밀번호가 일치하지 않습니다.");
 		}
 	}
 
-	if (errorMsgs.size() == 0) {
-		try {
-			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
-			stmt = conn.prepareStatement(
-					"UPDATE users " +
-					"SET  userid=?,  address=?, phone=? " +
-					"WHERE id=?"
-					);
-			stmt.setString(1,userid);
-			stmt.setString(2,address);
-			stmt.setString(3,phone);
-
+	if(errorMsgs.size()==0){
+		try{
+			conn=DriverManager.getConnection(dbUrl,dbUser,dbPassword);
+			stmt=conn.prepareStatement(
+					"UPDATE users "+
+					"SET address=?, phone=?, pwd=?"+
+					"WHERE id=?");
+			stmt.setString(1,n_add);
+			stmt.setString(2,n_phone);
+			stmt.setString(3,n_pwd);
+			stmt.setString(4,userid);
+			
 			result = stmt.executeUpdate();
 			if (result != 1) {
 				errorMsgs.add("변경에 실패하였습니다.");
@@ -76,7 +74,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>회원목록</title>
-	<link href="seller_private.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="wrap" style="width:930px; margin:0px auto;">
@@ -93,11 +90,11 @@
  				</ul>
  			</div>
 		 	<div class="form-action">
-		 		<a onclick="history.back();" class="btn">뒤로 돌아가기</a>
+		 			<input type="button" onclick="history.back();" value="뒤돌아가기"/>
 		 	</div>
 	 	<% } else if (result == 1) { %>
 	 		<div class="alert alert-success">
-	 			<b><%=userid%></b>님 정보가 수정되었습니다.
+	 			<b><%=session.getAttribute("id")%></b>님 정보가 수정되었습니다.
 	 		</div>
 		 	<div class="form-action">
 		 		<a href="index.jsp" class="btn">목록으로</a>
