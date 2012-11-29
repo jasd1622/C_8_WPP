@@ -7,6 +7,7 @@
 	String errorMsg = null;
 
 	String actionUrl;
+	String actionUrl2="checkid.jsp";
 	// DB 접속을 위한 준비
 	Connection conn = null;
 	PreparedStatement stmt = null;
@@ -99,7 +100,8 @@
 					<span class="controls">
 						<input type="text" name="userid"/>
 					</span>
-					<input type="button" value="중복조회" class="button"/>
+					<!-- <input type="submit" value="중복조회" class="button"/> -->
+					<a href="checkid.jsp;">중복확인</a>
 					<span>* 6~12자의 영문/숫자만 가능</span>
 				</td>
 			</tr>
