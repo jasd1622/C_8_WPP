@@ -2,50 +2,9 @@
     pageEncoding="UTF-8" import="java.sql.*" import="java.util.*"
     import="org.apache.commons.lang3.StringUtils"%>
 <%
-	Connection conn=null;
-	PreparedStatement stmt=null;
-	ResultSet rs =null;
-	
-	String actionUrl=null;
-	String dbUrl="jdbc:mysql://localhost:3306/wp";
-	String dbUser="root";
-	String dbPassword="asd1622";
-	request.setCharacterEncoding("utf-8");
-	
-	String userid="";
-	String userpwd="";
-	String useraddress="";
-	String userphone="";
-	
+	String actionUrl="";
 	if(session.getAttribute("id")!=null){
 		actionUrl="update.jsp";
-	try{
-	}catch(Exception e){}
-			String n_add=request.getParameter("address");
-			String n_phone=request.getParameter("phone");
-			String pwd=request.getParameter("cu_pw");
-			String n_pwd=request.getParameter("new_pw");
-			String n_pwd_conf=request.getParameter("new2_pw");
-		
-			
-			try{
-				conn=DriverManager.getConnection(dbUrl,dbUser,dbPassword);
-				stmt=conn.prepareStatement("SELECT * FROM users WHERE id=?");
-				stmt.setString(1,(String)session.getAttribute("id"));
-				
-				rs=stmt.executeQuery();
-				while(rs.next()){
-					userid=rs.getString("id");
-					userpwd=rs.getString("pwd");
-					useraddress=rs.getString("address");
-					userphone=rs.getString("phone");
-				}
-			}catch(SQLException e){
-			}finally{
-				if (rs != null) try{rs.close();} catch(SQLException e) {}
-				if (stmt != null) try{stmt.close();} catch(SQLException e) {}
-				if (conn != null) try{conn.close();} catch(SQLException e) {}
-			}
 	}
 
 %>
