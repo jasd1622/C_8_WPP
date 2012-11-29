@@ -39,7 +39,7 @@
 	}
 	if(!pwd.equals(n_pwd)){
 		if(!n_pwd.equals(n_pwd_conf)){
-			errorMsgs.add("비밀번호가 일치하지 않습니다.");
+			errorMsgs.add("새로운 비밀번호와 비밀번호 확인이 일치하지 않습니다.");
 		}
 	}
 
@@ -97,7 +97,7 @@
 	 			<b><%=session.getAttribute("id")%></b>님 정보가 수정되었습니다.
 	 		</div>
 		 	<div class="form-action">
-		 		<a href="index.jsp" class="btn">목록으로</a>
+		 		<a href="Main.jsp" class="btn">목록으로</a>
 		 	</div>
 	 	<%}%>
 	 	</div>
