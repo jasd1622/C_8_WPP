@@ -9,7 +9,7 @@
 </head>
 <body>
 <div id="wrap" style="width:930px; margin:0px auto;">
-	<jsp:include page="header.jsp"/>
+	<jsp:include page="share/header.jsp"/>
 	<div id="content">				
 		<span class="head_content">
 				<h1>회원 종류</h1>
@@ -21,7 +21,7 @@
 			</div>
 			</div>	
 	</div>
-	<jsp:include page="footer.jsp"/>
+	<jsp:include page="share/footer.jsp"/>
 		</div>
 </body>
 </html>

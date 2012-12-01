@@ -21,7 +21,7 @@
 </head>
 <body>
 <div id="wrap" style="width:930px; margin:0px auto;">
-	<jsp:include page="header.jsp"/>
+	<jsp:include page="share/header.jsp"/>
 	<div id="content">	
 		<div class="center_content">
 		<table class="t">
@@ -64,7 +64,7 @@
 		<center><a href="">돌아가기</a>&nbsp&nbsp&nbsp<a href="">구매</a></center>		
 		</div>		
 	</div>
-	<jsp:include page="footer.jsp"/>
+	<jsp:include page="share/footer.jsp"/>
 		</div>
 </body>
 </html>

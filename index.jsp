@@ -43,7 +43,7 @@
 </head>
 <body>
 <div id="wrap" style="width:930px; margin:0px auto;">
-<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="share/header.jsp"></jsp:include>
 
   <div id="content">	
  	<%
@@ -163,7 +163,7 @@
 			<a href="join.jsp" class="btn btn-primary">회원가입</a>
 		</div>	 	
   </div>
-<jsp:include page = "footer.jsp" />
+<jsp:include page = "share/footer.jsp" />
 </body>
 <script>
 $(function{

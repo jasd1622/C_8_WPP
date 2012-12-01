@@ -8,10 +8,10 @@
 </head>
 <body>
 <div id="wrap" style="width:930px; margin:0px auto;">
-	<jsp:include page="header.jsp"/>
+	<jsp:include page="share/header.jsp"/>
 	<div id="content">					
 	</div>
-	<jsp:include page="footer.jsp"/>
+	<jsp:include page="share/footer.jsp"/>
 		</div>
 </body>
 </html>
