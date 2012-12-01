@@ -53,7 +53,7 @@ input,button,textarea,select{*font-size:100%;}
 	vertical-align: center;
 	background: #D7181C;
 	color:white;
-
+	cursor:pointer;
 }
 /*  -- header -- */
 #header {

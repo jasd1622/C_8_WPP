@@ -1,5 +1,8 @@
 #content { overflow:auto; margin:50px;}
 .center_content{margin:0 auto;width:720px;}
+.head_content{
+	height:40px;
+}
 .txt{
 	width:53px;
 }
@@ -7,7 +10,7 @@
 	border-top:1px solid #CCC; border-collapse:collapse; 
 	border-spacing:20px;
 	width:720px;height:400px;
-	margin:40px 0 20px 0;
+	margin:5px 0 20px 0;
 }
 .t tr{border-bottom: 1px solid #CCC;}
 .t th{width:20%;background-color:#EEE;}
