@@ -33,14 +33,10 @@
 			<%if(items!=null && items.length()>0){ 
 				while(stItem.hasMoreTokens()){
 					String itemTemp = stItem.nextToken();
-					String kitemTemp = new String(itemTemp.getBytes("8859_1"),"euc-kr");
+					String kitemTemp = new String(itemTemp.getBytes("8859_1"),"UTF-8");
 					String priceTemp = stPrice.nextToken();
-					String totalTemp = request.getParameter("total"); //여기부터
-
-					if (totalTemp==null||totalTemp.length()==0) {
-						totalTemp = "0";
-					} 
-					total += Integer.parseInt(totalTemp); //여기까지 고민ㅋ
+					
+					total += Integer.parseInt(priceTemp);
 			%>
 			<tr>
 				<td><%=kitemTemp %></td>
