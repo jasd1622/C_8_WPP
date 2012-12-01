@@ -1,20 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%session.invalidate(); %>
-<!DOCTYPE html>
+	pageEncoding="UTF-8"%>
+<%
+	session.invalidate();
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8 http-equiv="Content-Type" content="text/html;">
 <title>Insert title here</title>
 </head>
 <body>
-<div id="wrap" style="width:930px; margin:0px auto;">
-	<jsp:include page="header.jsp"></jsp:include>
-	<div id="content">
-	<b>로그아웃 되었습니다.</b>
-	<a href="Main.jsp">메인으로</a>	
-	</div>
-	<jsp:include page="footer.jsp"></jsp:include>
-	</div>
+			<script>
+			alert("로그아웃 되었습니다.");
+			 document.location.href = "Main.jsp";
+			</script>
 </body>
 </html>
