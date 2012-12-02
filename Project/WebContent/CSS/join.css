@@ -19,3 +19,7 @@
 	border-right:0;
 }
 .center{margin:10px auto;width:250px; }
+#close{
+	margin-left:90px;
+	margin-top:8px;
+}

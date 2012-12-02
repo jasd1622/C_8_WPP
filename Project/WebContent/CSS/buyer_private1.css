@@ -19,5 +19,8 @@
 	margin:60px 0 15px 25px;
 	font-size:15pt;
 	text-align: left;
-
+}
+#cou td{
+	text-align:center;
+	font-size: 12pt;
 }

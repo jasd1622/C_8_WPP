@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div id="sub_con">
-		<div id="sub_title">My Page</div>
+		<div id="sub_title">* My Page</div>
 		<table>
 			<tr>
 				<th><a href="">매출내역 확인</a></th>

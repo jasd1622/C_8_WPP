@@ -13,7 +13,7 @@
 		<a href="log.jsp">로그인</a> |
 		<a href="join_sort.jsp">회원가입</a>
 		<%} else {%>
-		<a href="buyer_private2.jsp"><%=session.getAttribute("id") %></a>님 반갑습니다. |
+		<a href="private1.jsp"><%=session.getAttribute("id") %></a>님 반갑습니다. |
 		<a href="logout.jsp">로그아웃</a>
 		<%} %>
 	</div>

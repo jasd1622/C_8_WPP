@@ -9,9 +9,9 @@
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 	
-		String dbUrl = "jdbc:mysql://localhost:3306/wp_test";
-		String dbUser = "slaej1228";
-		String dbPassword = "tiger";
+		String dbUrl = "jdbc:mysql://localhost:3306/wp";
+		String dbUser = "root";
+		String dbPassword = "asd1622";
 	
 	request.setCharacterEncoding("utf-8");
 	
@@ -21,8 +21,8 @@
 	}catch(Exception e){}
 	try{
 			conn=DriverManager.getConnection(dbUrl,dbUser,dbPassword);
-			stmt=conn.prepareStatement("DELETE * FROM users WHERE id=?");
-			stmt.setInt(1,id);
+			stmt=conn.prepareStatement("DELETE FROM users WHERE id=?");
+			stmt.setString(1,(String)session.getAttribute("id"));
 			
 			result = stmt.executeUpdate();
 			if(result!=1){ errorMsg="삭제에 실패했습니다.";}
@@ -50,8 +50,11 @@
 <%=	errorMsg %>
 </div>
 <%}else{ %>
-<div id="alert alert-success">
-사용자 정보를 삭제하였습니다.
+<%session.invalidate();%>
+<script type="text/javascript">
+alert("사용자 정보를 삭제하였습니다.");
+document.location.href="Main.jsp";
+</script>
 </div>
 <%} %>
 <div id="form-action">

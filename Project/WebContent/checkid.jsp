@@ -54,6 +54,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/join.css">
 </head>
 <body>
 	<table border="1" style="margin:0 auto; text-align:center; width:230px ;height:60px; border-collapse:collapse; margin-top:30px;">
@@ -68,11 +69,11 @@
 			if (!isExist) {
 		%>
 		<td>사용 가능한 아이디입니다.</td>
-		<%=grade%>
 		<%
 			}
 		%>
 		</tr>
 	</table>
+	<input type="button" id="close" value="닫기" onclick="window.open('about:blank', '_self').close()"/>
 </body>
 </html>
