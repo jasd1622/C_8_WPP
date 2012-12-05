@@ -17,7 +17,7 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<link href="basket.css" rel="stylesheet" type="text/css">
+<link href="CSS/basket.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="wrap" style="width:930px; margin:0px auto;">

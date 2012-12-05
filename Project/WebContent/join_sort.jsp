@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<link rel="stylesheet" type="text/css" href="css/join_sort.css">
+<link rel="stylesheet" type="text/css" href="CSS/join_sort.css">
 </head>
 <script type="text/javascript">
 function buyer(){

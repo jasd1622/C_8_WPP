@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="css/log.css" rel="stylesheet" type="text/css">
+<link href="CSS/log.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="wrap" style="width:930px; margin:0px auto;">
@@ -17,7 +17,7 @@
 	<div id="write">로그인</div>
 		<div id="center_content">
 			<div id="pic">
-				<img src="img/suji.png" alt="로고" style="width:300px">
+				<img src="IMG/suji.png" alt="로고" style="width:300px">
 			</div>
 			<span id="insert">
 				<form action="<%=actionUrl%>" method="post">
