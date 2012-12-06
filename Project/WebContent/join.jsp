@@ -30,7 +30,7 @@
 </head>
 <script type="text/javascript">
 	function check(){
-		window.open("checkid.jsp?id="+document.memberform.userid.value,"check","width=140px,height=160px,top=250px,left=600px");
+		window.open("checkid.jsp?id="+document.memberform.userid.value,"","width=140px,height=160px,top=250px,left=600px");
 	}
 </script>
 <body>
@@ -59,7 +59,7 @@
 								<%}else{ %>
 								<th>이름</th>
 								<%} %>
-								<td class="control-group"><input type="text" name="name" />
+								<td class="control-group"><input type="text" name="name"/>
 								</td>
 							</tr>
 							<tr>
@@ -115,12 +115,12 @@
 												}
 											%>
 									</select> <%} %>
-								</span> <span>-</span> <input type="text" class="txt" name="phone2" />
-									<span>-</span> <input type="text" class="txt" name="phone3" />
+								</span> <span>-</span> <input type="text" class="txt" name="phone2"/>
+									<span>-</span> <input type="text" class="txt" name="phone3"/>
 								</td>
 						</tbody>
 					</table>
-					<input type="hidden" name="grade" value="<%=grade %>" />
+					<input type="hidden" name="grade" value="<%=grade %>"/>
 					<h2>이용약관</h2>
 					<br />
 					<div style="margin-bottom: 5px">
@@ -130,7 +130,7 @@
 					<input type="checkbox" name="agree" value="agree" /> 약관에 동의합니다.
 					<p class="center">
 					<div class="form-actions">
-						<input type="submit" class="btn btn-primary" value="가입" id="ga" />
+						<input type="submit" class="btn btn-primary" value="가입" id="ga" onclick="register()" />
 					</div>
 				</div>
 			</form>

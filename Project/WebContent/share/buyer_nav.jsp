@@ -14,10 +14,10 @@
 				</div>
 				<table>
 					<tr>
-						<th><a href="buyer_private1.html" class="section">주문내역/쿠폰 확인</a></th>
+						<th><a href="private1.jsp" class="section">주문내역/쿠폰 확인</a></th>
 					</tr>
 					<tr>
-						<th><a href="buyer_private2.html" class="section">개인정보 수정</a></th>
+						<th><a href="private2.jsp" class="section">개인정보 수정</a></th>
 					</tr>
 				</table>
 			</div>

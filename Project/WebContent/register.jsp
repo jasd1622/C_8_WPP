@@ -8,7 +8,7 @@
 	ResultSet rs = null;
 
 	String dbUrl = "jdbc:mysql://localhost:3306/wp";
-	String dbUser = "root";
+	String dbUser = "jasd1622";
 	String dbPassword = "asd1622";
 
 	request.setCharacterEncoding("utf-8");
@@ -29,10 +29,8 @@
 	if (userid == null || userid.trim().length() == 0) {
 		errorMsgs.add("ID를 반드시 입력하시오.");
 	}
-	if (pwd == null) {
-		if (pwd == null || pwd.length() < 6) {
-			errorMsgs.add("비밀번호는 6자 이상 입력해주세요.");
-		}
+	if (pwd == null || pwd.length() < 6) {
+		errorMsgs.add("비밀번호는 6자 이상 입력해주세요.");
 	}
 	if (!pwd.equals(pwd_conf)) {
 		errorMsgs.add("비밀번호가 일치하지 않습니다.");
@@ -41,7 +39,7 @@
 		errorMsgs.add("전화번호를 입력해주세요");
 	}
 	if ((phone2.length() < 3 && phone2.length() > 0)
-			|| (phone3.length() < 3 && phone3.length() > 0)) {
+	|| (phone3.length() < 3 && phone3.length() > 0)) {
 		errorMsgs.add("전화번호를 다시 입력해주세요.");
 	}
 	if (checkbox == null) {
@@ -49,42 +47,55 @@
 	}
 	if (errorMsgs.size() == 0) {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection(dbUrl, dbUser,
-					dbPassword);
-			stmt = conn
-					.prepareStatement("INSERT INTO users(id, pwd,name, address, phone,grade)"
-							+ "VALUES(?,?,?,?,?,?)"
-							);
-			stmt.setString(1, userid);
-			stmt.setString(2, pwd);
-			stmt.setString(3, name);
-			stmt.setString(4, address);
-			stmt.setString(5, phone1 + phone2 + phone3);
-			stmt.setString(6,grade);
-
-			result = stmt.executeUpdate();
-			if (result != 1) {
-				errorMsgs.add("등록에 실패하였습니다.");
-			}
+	Class.forName("com.mysql.jdbc.Driver");
+	conn = DriverManager.getConnection(dbUrl, dbUser,
+			dbPassword);
+	stmt = conn
+			.prepareStatement("INSERT INTO users(id, pwd,name, address, phone1,phone2,phone3,grade)"
+					+ "VALUES(?,?,?,?,?,?,?,?)"
+					);
+	stmt.setString(1, userid);
+	stmt.setString(2, pwd);
+	stmt.setString(3, name);
+	stmt.setString(4, address);
+	stmt.setString(5, phone1);
+	stmt.setString(6, phone2);
+	stmt.setString(7, phone3);
+	stmt.setString(8,grade);
+	result = stmt.executeUpdate();
+	
+	if (result != 1) {
+		errorMsgs.add("등록에 실패하였습니다.");
+	}
+	if(grade.equals("B")){
+		stmt=conn.prepareStatement("INSERT INTO coupons(user_id)"+"VALUES(?)");
+		stmt.setString(1,userid);
+		
+		result = stmt.executeUpdate();
+		
+		if (result != 1) {
+			errorMsgs.add("등록에 실패하였습니다.");
+		}
+	}
+	
 		} catch (SQLException e) {
-			errorMsgs.add("SQL 에러" + e.getMessage());
+	errorMsgs.add("SQL 에러" + e.getMessage());
 		} finally {
-			if (rs != null)
-				try {
-					rs.close();
-				} catch (SQLException e) {
-				}
-			if (stmt != null)
-				try {
-					stmt.close();
-				} catch (SQLException e) {
-				}
-			if (conn != null)
-				try {
-					conn.close();
-				} catch (SQLException e) {
-				}
+	if (rs != null)
+		try {
+			rs.close();
+		} catch (SQLException e) {
+		}
+	if (stmt != null)
+		try {
+			stmt.close();
+		} catch (SQLException e) {
+		}
+	if (conn != null)
+		try {
+			conn.close();
+		} catch (SQLException e) {
+		}
 		}
 	}
 %>
@@ -95,41 +106,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div id="wrap" style="width: 930px; margin: 0px auto;">
-		<jsp:include page="share/header.jsp"></jsp:include>
-		<div id="content">
-			<%
-				if (errorMsgs.size() > 0) {
-			%>
-			<div class="alert alert_error">
-				<h3>Errors:</h3>
-				<ul>
-					<%
-						for (String msg : errorMsgs) {
-					%>
-					<li><%=msg%></li>
-					<%
-						}
-					%>
-				</ul>
-			</div>
-			<div class="form-action">
-				<input type="button" onclick="history.back();" value="뒤돌아가기" />
-			</div>
-			<%
-				} else if (result == 1) {
-			%>
-			<div class="alert alert-success">
-				<b><%=userid%></b>님 등록해주셔서 감사합니다.
-			</div>
-			<div class="form-action">
-				<a href="Main.jsp" class="btn">목록으로</a>
-			</div>
-			<%
-				}
-			%>
-		</div>
-		<jsp:include page="share/footer.jsp"></jsp:include>
-	</div>
+	<%
+		if (errorMsgs.size() > 0) {
+	%>
+	<script>
+				alert("<%=errorMsgs.get(0)%>");
+				history.back();
+			</script>
+	<%
+		} else if (result == 1) {
+	%>
+	<script>
+	alert("<%=userid%>님 등록해주셔서 감사합니다. ");
+	document.location.href = "Main.jsp";
+	</script>
+	<%
+		}
+	%>
 </body>
 </html>

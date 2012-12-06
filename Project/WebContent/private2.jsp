@@ -6,6 +6,14 @@
 	if (session.getAttribute("id") != null) {
 		actionUrl = "update.jsp";
 	}
+	String[] seller_phones = { "02", "031", "032", "033", "041", "042",
+			"043", "044", "051", "052", "053", "054", "055", "061",
+			"062", "063", "064" };
+	String[] buyer_phones = { "010", "011", "016", "018", "019" };
+	
+	String phone1=(String)session.getAttribute("phone1");
+	String phone2=(String)session.getAttribute("phone2");
+	String phone3=(String)session.getAttribute("phone3");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -59,15 +67,44 @@
 								if (session.getAttribute("grade").equals("S")) {
 							%>
 							<th>가게 전화번호</th>
+							<td class="control-group"><select
+									name="phone1">
+										<%
+												for (String pnum : seller_phones) {
+													out.print("<option");
+													if (pnum.equals(session.getAttribute("phone1"))) {
+														out.print(" selected");
+													}
+													out.println(">" + pnum + "</option>");
+												}
+											%>
+								</select>
+								<span>-</span> <input type="text" class="txt" name="phone2" style="width:53px" value="<%=phone2%>"/>
+									<span>-</span> <input type="text" class="txt" name="phone3" style="width:53px" value="<%=phone3%>"/>
+							</td>
 							<%
 								} else {
 							%>
 							<th>휴대폰 번호</th>
+							<td class="control-group"><span class="controls"> <select
+									name="phone1">
+										<%
+												for (String pnum : buyer_phones) {
+													out.print("<option");
+													if (pnum.equals(session.getAttribute("phone1"))) {
+														out.print(" selected");
+													}
+													out.println(">" + pnum + "</option>");
+												}
+											%>
+								</select>
+							</span>
+							<span>-</span> <input type="text" class="txt" name="phone2" style="width:53px" value="<%=phone2%>"/>
+									<span>-</span> <input type="text" class="txt" name="phone3" style="width:53px" value="<%=phone3%>"/>
+							</td>
 							<%
 								}
 							%>
-							<td><input type="text" name="phone" id="pass"
-								value=<%=session.getAttribute("phone")%> /></td>
 						</tr>
 					</table>
 					<table border="3" class="table2">
@@ -89,8 +126,7 @@
 					</table>
 					<div id="btn">
 						<input type="submit" value="수정" class="btn1" /> <input
-							type="button" value="취소" class="btn1" /> <input type="button"
-							value="회원탈퇴" class="btn1" onclick="del()" />
+							type="button" value="회원탈퇴" class="btn1" onclick="del()" />
 					</div>
 				</div>
 			</form>

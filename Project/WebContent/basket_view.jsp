@@ -11,13 +11,15 @@
 		stItem=new StringTokenizer(items,"|");
 		stPrice=new StringTokenizer(prices,"|");
 	}
+	List<String> buylist=new ArrayList<String>();
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title></title>
-<link href="basket.css" rel="stylesheet" type="text/css">
+<link href="css/etc.css" rel="stylesheet" type="text/css">
+<link href="css/basket.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="wrap" style="width:930px; margin:0px auto;">
@@ -61,7 +63,7 @@
 					<td>O</td>
 				</tr>
 		</table>
-		<center><a href="">돌아가기</a>&nbsp&nbsp&nbsp<a href="">구매</a></center>		
+		<center><a href="" class="btn btn-primary">구매</a>&nbsp&nbsp&nbsp<a href="" class="btn btn-primary">쿠폰사용</a>&nbsp&nbsp&nbsp<a href="" class="btn btn-primary">돌아가기</a></center>		
 		</div>		
 	</div>
 	<jsp:include page="share/footer.jsp"/>
