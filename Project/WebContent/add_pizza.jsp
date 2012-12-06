@@ -14,7 +14,6 @@
 	String price;			//int type
 	String description = "";
 	String category = "";
-	File image = "";
 
 %>
 <!DOCTYPE html>
@@ -53,13 +52,13 @@
 					<div class="control-group">
 						<label class="control-label" for="category">카테고리</label>
 						<div class="controls">
-							<input type="text" value="<%=price%>"  name="name" onclick="check()"/>
+							<input type="text" value="<%=category%>"  name="name" onclick="check()"/>
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="image">이미지</label>
 						<div class="controls">
-							<input type="file" value="<%=image%>"  name="image" onclick="check()"/>
+							<input type="file" name="image" size="40">
 						</div>
 					</div>
 					<div class="control-group">
