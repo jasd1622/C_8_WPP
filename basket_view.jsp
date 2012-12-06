@@ -25,11 +25,14 @@
 	<div id="content">	
 		<div class="center_content">
 		<table class="t">
+		<thead>
 		<tr>
 				<th>제품명</th>
 				<th>금액</th>
 				<th>삭제하기</th>
-			</tr>
+		</tr>
+		</thead>
+		<tbody>
 			<%if(items!=null && items.length()>0){ 
 				while(stItem.hasMoreTokens()){
 					String itemTemp = stItem.nextToken();
@@ -46,7 +49,10 @@
 			<%}}else{ %>
 			<tr><td colspan="3">선택 목록이 존재하지 않습니다</td></tr>
 			<%} %>
+			</tbody>
+			<tfoot>
 			<tr><td colspan="3">금액합계: <%=total %></td></tr>
+			</tfoot>
 		</table>
 		
 		<table class="t">

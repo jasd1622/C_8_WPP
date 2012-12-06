@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div id="footer" style="color:#000; text-align:center; padding:30px; width:930px; margin:0px auto;
+<div id="footer" style="color:#000; text-align:center; padding-top:30px; width:770px; margin:0px auto;
 clear:both;">
 	<hr/>
 	<p>사이트 소개 | 이용약관 | 개인정보취급방침 | 책임의 한계와 법적 고지 | 고객센터 </p>

@@ -17,7 +17,7 @@
 	<div id="write">로그인</div>
 		<div id="center_content">
 			<div id="pic">
-				<img src="suji.png" alt="로고" style="width:300px">
+				<img src="img/suji.png" alt="로고" style="width:300px">
 			</div>
 			<span id="insert">
 				<form action="<%=actionUrl%>"method="post">
