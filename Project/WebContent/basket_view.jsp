@@ -18,8 +18,12 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<<<<<<< HEAD
+<link href="CSS/basket.css" rel="stylesheet" type="text/css">
+=======
 <link href="css/etc.css" rel="stylesheet" type="text/css">
 <link href="css/basket.css" rel="stylesheet" type="text/css">
+>>>>>>> 0fbca7fc3ef45abae288e12c38c83e7bf0e4d2ad
 </head>
 <body>
 <div id="wrap" style="width:930px; margin:0px auto;">
