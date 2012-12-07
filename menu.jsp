@@ -22,6 +22,7 @@
 	int numInPage = 9, numInRow = 3;
 	int startPos = (pageNo - 1) * numInPage;
 	int numItems, numPages;
+	request.setCharacterEncoding("euc-kr");
 %>
 <!DOCTYPE html>
 <html>
@@ -29,10 +30,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="menu.css" rel="stylesheet" type="text/css">
+<link href="bootstrap.min.css" rel="stylesheet">
 </head>
 <script type="text/javascript">
-	function dc() {
-		window.open("menuin.jsp?name="+document.member.name.value,"check",
+	function dc(value) {
+		window.open("menuin.jsp?name="+value,"check",
 				"width=500px,height=500px,top=250px,left=600px");
 	}
 </script>
@@ -41,6 +43,7 @@
 		<jsp:include page="share/header.jsp"></jsp:include>
 
 		<%
+		
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
 
@@ -64,7 +67,7 @@
 			<div class="center_content">
 				<span id="order"> Total <b><%=numItems%></b> menus
 				</span>
-							<form name="member">
+							<form method="post" action="menuin.jsp" >
 				<table class="t">
 					<tbody>
 
@@ -75,10 +78,14 @@
 						<tr>
 							<%
 								while (number < numInRow && rs.next()) {
-							%><%name=rs.getString("name"); %>
-							<th><a href="#" onclick="dc()" name="name" value="<%=rs.getString("name") %>"><%=rs.getString("name") %></a>
-								판매자 : <%=rs.getString("user_id")%> 가격 : <%=rs.getString("price")%>
-							</th>
+									name=rs.getString("name"); %>
+							<th>
+							<ul>
+							<li style="margin:10px"><a href="javascript:dc('<%=name %>');"><img src="img/pizza1.gif"></a></li>
+								<li>피자명 : <%=rs.getString("name") %><br/></li>
+								<li>가격 : <%=rs.getString("price")%></li>
+								<li style="margin:5px"><a href="basket_view.jsp?name=<%=name %>&price=<%=rs.getString("price") %>" class="btn btn-danger">장바구니</a></li>
+							</ul></th>
 							<%
 								num++;
 											number++;
@@ -92,6 +99,7 @@
 					</tbody>
 				</table>
 					</form>
+					<div class="pagination pagination-centered">
 				<ul>
 					<%
 						// 페이지 네비게이션을 위한 준비
@@ -133,8 +141,9 @@
 						} else {
 					%>
 					<li class="li"><a href="menu.jsp?page=<%=pageNo + 1%>">&raquo;</a></li>
+					<%} %>
+				</ul>
 					<%
-						}
 						} catch (SQLException e) {
 							// SQL 에러의 경우 에러 메시지 출력
 							out.print("<div class='alert'>" + e.getLocalizedMessage()
@@ -158,7 +167,6 @@
 								}
 						}
 					%>
-				</ul>
 			</div>
 		</div>
 		<jsp:include page="share/footer.jsp"></jsp:include>

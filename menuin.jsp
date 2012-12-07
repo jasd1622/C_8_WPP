@@ -13,6 +13,7 @@
 	String dbPassword="tiger";
 	
 	String pname = request.getParameter("name");
+	String category ="";
 	String price ="";
 	String seller=""; 
 	String desc= "";
@@ -34,6 +35,7 @@
 	    	  desc=rs.getString("description");
 	    	  price=rs.getString("price");
 	    	  seller=rs.getString("user_id");
+	    	  category=rs.getString("category");
 	      }
 	 }catch (SQLException e) {
 	      errorMsg = "SQL 에러: " + e.getMessage();
@@ -49,10 +51,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="menu.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
-
 	<div id="content">
 	 <%
 		 if (errorMsg != null && errorMsg.length() > 0 ) {
@@ -60,8 +61,10 @@
 		    out.print("<div class='alert'>" + errorMsg + "</div>");
 		 } else {
 	%>
-	<table>
-	<%=pname %>
+	<%
+		if(category.equals("p")){
+	%>
+	<table class="t">
 		<tr>
 			<th>피자사진</th>
 		</tr>
@@ -74,8 +77,30 @@
 		<tr>
 			<td><%=desc %></td>
 		</tr>
+		<tr>
+			<td><input type="button" value="장바구니"/></td>
+		</tr>
 	</table>
-	<% } %>	
+	<%} else { %>
+	<table class="t">
+		<tr>
+			<th>음료사진</th>
+		</tr>
+		<tr>
+			<td><%=pname %> <%=price %>원</td>
+		</tr>
+		<tr>
+			<td>by <%=seller %></td>
+		</tr>
+		<tr>
+			<td><%=desc %></td>
+		</tr>
+		<tr>
+			<td><input type="button" value="장바구니"/></td>
+		</tr>
+	</table>
+	
+	<% } }%>	
 	</div>
 </body>
 </html>
