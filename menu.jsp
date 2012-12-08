@@ -5,14 +5,17 @@
 	Connection conn = null;
 	Statement stmt = null;
 	ResultSet rs = null;
+	List<String> buylist = new ArrayList<String>();
 
-	String dbUrl = "jdbc:mysql://localhost:3306/wp_test";
-	String dbUser = "slaej1228";
-	String dbPassword = "tiger";
+	String dbUrl = "jdbc:mysql://localhost:3306/wp";
+	String dbUser = "jasd1622";
+	String dbPassword = "asd1622";
 	int pageNo = 1;
 	int number = 0;
 	int num = 0;
-	String name="";
+	int inid=0;
+	
+	String name = "";
 
 	try {
 		pageNo = Integer.parseInt(request.getParameter("page"));
@@ -22,19 +25,37 @@
 	int numInPage = 9, numInRow = 3;
 	int startPos = (pageNo - 1) * numInPage;
 	int numItems, numPages;
-	request.setCharacterEncoding("euc-kr");
+	request.setCharacterEncoding("utf-8");
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="CSS/menu.css" rel="stylesheet" type="text/css">
+<link href="css/menu.css" rel="stylesheet" type="text/css">
+<link href="css/etc.css" rel="stylesheet">
 </head>
 <script type="text/javascript">
 	function dc(value) {
-		window.open("menuin.jsp?name="+value,"check",
+		window.open("menuin.jsp?name=" + value, "check",
 				"width=500px,height=500px,top=250px,left=600px");
+	}
+	function basket(value) {
+		if(true){
+			var con=confirm("장바구니로 이동합니다.");
+			if(con){
+				buylist.add("value");
+				document.location.href="basket_view.jsp?buylist[]="+buylist;
+			}else{
+				buylist.add("value");
+				document.location.href="basket_view.jsp?buylist[]="+value;
+			}
+		}
+		else{
+			alert("로그인해주세요.");
+			document.location.href="log.jsp";
+		
+		}
 	}
 </script>
 <body>
@@ -42,7 +63,6 @@
 		<jsp:include page="share/header.jsp"></jsp:include>
 
 		<%
-		
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
 
@@ -66,82 +86,89 @@
 			<div class="center_content">
 				<span id="order"> Total <b><%=numItems%></b> menus
 				</span>
-							<form method="post" action="menuin.jsp" >
-				<table class="t">
-					<tbody>
+				<form method="post" action="menuin.jsp">
+					<table class="t">
+						<tbody>
 
-						<%
-							while (num <= numInPage) {
-									num++;
-						%>
-						<tr>
 							<%
-								while (number < numInRow && rs.next()) {
-									name=rs.getString("name"); %>
-							<th>
-							<ul>
-							<li style="margin:10px"><a href="javascript:dc('<%=name %>');"><img src="IMG/pizza1.gif"></a></li>
-								<li>피자명 : <%=rs.getString("name") %><br/></li>
-								<li>가격 : <%=rs.getString("price")%></li>
-								<li style="margin:5px"><a href="basket_view.jsp?name=<%=name %>&price=<%=rs.getString("price") %>" class="btn">장바구니</a></li>
-							</ul></th>
-							<%
-								num++;
-											number++;
-										}
+								while (num <= numInPage) {
+										num++;
 							%>
-						</tr>
+							<tr>
+								<%
+									while (number < numInRow && rs.next()) {
+												name = rs.getString("name");
+								%>
+								<th>
+									<ul>
+										<li style="margin: 10px"><a
+											href="javascript:dc('<%=name%>');"><img
+												src="img/pizza1.gif"></a></li>
+										<li>피자명 : <%=rs.getString("name")%><br /></li>
+										<li>가격 : <%=rs.getString("price")%></li>
+										<li style="margin: 5px"><input type="button"
+											class="btn btn-danger" value="장바구니" onclick="basket('<%=name %>')" /></li>
+									</ul>
+								</th>
+								<%
+									num++;
+												number++;
+											}
+								%>
+							</tr>
+							<%
+								number = 0;
+									}
+							%>
+						</tbody>
+					</table>
+				</form>
+				<div class="pagination pagination-centered">
+					<ul>
 						<%
-							number = 0;
+							// 페이지 네비게이션을 위한 준비
+								int startPageNo, endPageNo;
+								int delta = 5;
+								startPageNo = (pageNo <= delta) ? 1 : pageNo - delta;
+								endPageNo = startPageNo + (delta * 2) + 1;
+
+								if (endPageNo > numPages) {
+									endPageNo = numPages;
 								}
+
+								// 이전 페이지로
+								if (pageNo <= 1) {
 						%>
-					</tbody>
-				</table>
-					</form>
-					<div class="pagination" style="text-align:center;margin-top:10px">
-				<ul>
-					<%
-						// 페이지 네비게이션을 위한 준비
-							int startPageNo, endPageNo;
-							int delta = 5;
-							startPageNo = (pageNo <= delta) ? 1 : pageNo - delta;
-							endPageNo = startPageNo + (delta * 2) + 1;
-
-							if (endPageNo > numPages) {
-								endPageNo = numPages;
+						<li class="li"><a href="#">&laquo;</a></li>
+						<%
+							} else {
+						%>
+						<li class="li"><a href="menu.jsp?page=<%=pageNo - 1%>">&laquo;</a></li>
+						<%
 							}
 
-							// 이전 페이지로
-							if (pageNo <= 1) {
-					%>
-					<li class="li"><a href="#">&laquo;</a></li>
-					<%
-						} else {
-					%>
-					<li class="li"><a href="menu.jsp?page=<%=pageNo - 1%>">&laquo;</a></li>
-					<%
-						}
+								// 페이지 목록 출력 (현재-delta ~ 현재+delta까지)
+								String className = "";
+								for (int i = startPageNo; i <= endPageNo; i++) {
+									className = (i == pageNo) ? "active" : "";
+									out.println("<li class='" + className + "'>");
+									out.println("<a href='menu.jsp?page=" + i + "'>" + i
+											+ "</a>");
+									out.println("</li>");
+								}
 
-							// 페이지 목록 출력 (현재-delta ~ 현재+delta까지)
-							String className = "";
-							for (int i = startPageNo; i <= endPageNo; i++) {
-								className = (i == pageNo) ? "active" : "";
-								out.println("<li class='" + className + "'>");
-								out.println("<a href='menu.jsp?page=" + i + "'>" + i
-										+ "</a>");
-								out.println("</li>");
+								// 다음 페이지로
+								if (pageNo >= numPages) {
+						%>
+						<li class="li"><a href="#">&raquo;</a></li>
+						<%
+							} else {
+						%>
+						<li class="li"><a href="menu.jsp?page=<%=pageNo + 1%>">&raquo;</a></li>
+						<%
 							}
-
-							// 다음 페이지로
-							if (pageNo >= numPages) {
-					%>
-					<li class="li"><a href="#">&raquo;</a></li>
-					<%
-						} else {
-					%>
-					<li class="li"><a href="menu.jsp?page=<%=pageNo + 1%>">&raquo;</a></li>
-					<%} %>
-				</ul>
+						%>
+					</ul>
 					<%
 						} catch (SQLException e) {
 							// SQL 에러의 경우 에러 메시지 출력
@@ -166,8 +193,8 @@
 								}
 						}
 					%>
+				</div>
 			</div>
-		</div>
 		</div>
 		<jsp:include page="share/footer.jsp"></jsp:include>
 	</div>
