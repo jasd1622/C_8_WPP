@@ -17,7 +17,7 @@
 						<th><a href="private1.jsp">매출내역 확인</a></th>
 					</tr>
 					<tr>
-						<th><a href="">피자정보 수정</a></th>
+						<th><a href="add_pizza.jsp">피자정보 수정</a></th>
 					</tr>
 					<tr>
 						<th><a href="private2.jsp">개인정보 수정</a></th>
