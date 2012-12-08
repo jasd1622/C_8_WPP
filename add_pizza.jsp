@@ -11,7 +11,7 @@
 	String id;					//int type
 	String userid = "";
 	String name = "";
-	String price;			//int type
+	String price="";			//int type
 	String description = "";
 	String category = "";
 
@@ -37,40 +37,42 @@
 					<h1>피자 추가</h1><br/>
 				</div>
 				<div class="center_content">
-					<div class="control-group">
-						<label class="control-label" for="name">피자 이름</label>
-						<div class="controls">
+					<table class="t">
+					<tr>	
+						<th class="control-th" for="name">피자 이름</th>
+						<td class="controls">
 							<input type="text" value="<%=name%>" name="name" onclick="check()"/>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="price">피자 가격</label>
-						<div class="controls">
+						</td>
+					</tr>
+					<tr>
+						<th class="control-th" for="price">피자 가격</th>
+						<td class="controls">
 							<input type="text" value="<%=price%>"  name="name" onclick="check()"/>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="category">카테고리</label>
-						<div class="controls">
+						</td>
+					</tr>
+					<tr>
+						<th class="control-th" for="category">카테고리</th>
+						<td class="controls">
 							<input type="text" value="<%=category%>"  name="name" onclick="check()"/>
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="image">이미지</label>
-						<div class="controls">
+						</td>
+					</tr>
+					<tr>
+						<th class="control-th" for="image">이미지</th>
+						<td class="controls">
 							<input type="file" name="image" size="40">
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="description">피자 설명</label>
-						<div class="controls">
-							<textarea rows="7" cols="7" name="description"></textarea>
-						</div>
-					</div>
+						</td>
+					</tr>
+					<tr>
+						<th class="control-th" for="description">피자 설명</th>
+						<td class="controls">
+							<textarea rows="15" cols="70" name="description"></textarea>
+						</td>
+					</tr>
+					</table>
 					<input type="hidden" name="grade" value="0"/>
 					<p class="center">
-					<div class="form-actions">
-						<input type="submit" class="btn btn-primary" value="추가" id="add" />
+					<div class="form-actions" style="text-align:center">
+						<input type="submit" class="btn" value="추가" id="add" />
 					</div>
 				</div>
 			</form>

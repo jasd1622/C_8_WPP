@@ -39,7 +39,11 @@
 		<jsp:include page="share/header.jsp"></jsp:include>
 		<div id="content"
 			style="width: 98%; margin: 0 auto; margin-top: 50px;">
+			<% if(session.getAttribute("grade").equals("S")){%>
+			<jsp:include page="share/seller_nav.jsp" />
+			<%} else{ %>
 			<jsp:include page="share/buyer_nav.jsp" />
+			<%} %>
 			<form action="<%=actionUrl%>" method="post">
 				<div id="main_con">
 					<table border="3" class="table1">
