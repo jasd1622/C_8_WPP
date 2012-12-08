@@ -17,9 +17,9 @@
 	String phone3 = "";
 	String grade = "";
 
-	String dbUrl = "jdbc:mysql://localhost:3306/wp";
-	String dbUser = "jasd1622";
-	String dbPassword = "asd1622";
+	String dbUrl = "jdbc:mysql://localhost:3306/wp_test";
+	String dbUser = "slaej1228";
+	String dbPassword = "tiger";
 	boolean isSuccess = false;
 
 	List<String> errorMsgs = new ArrayList<String>();

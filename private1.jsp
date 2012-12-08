@@ -11,6 +11,8 @@
 	String dbPassword = "asd1622";
 	int order_num=0;
 	int menu_num=0;
+	String pname=request.getParameter("name");
+	String price="";
 
 	String id = (String) session.getAttribute("id");
 	int coupons = 0;
@@ -31,6 +33,13 @@
 		if(rs.next()){
 			order_num=rs.getInt("id");
 		}
+		stmt=conn.prepareStatement("SELECT * FROM menus WHERE name=?");
+		stmt.setString(1,pname);
+		rs=stmt.executeQuery();
+		if(rs.next()){
+			price=rs.getString("price");
+			price=rs.getString("num");
+		}
 		if(order_num!=0){
 			stmt=conn.prepareStatement("SELECT * FROM order_menus WHERE order_id=?");
 			stmt.setInt(1,order_num);
@@ -46,8 +55,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/buyer_private1.css">
-<link rel="stylesheet" type="text/css" href="css/seller_private_1_3.css">
+<link rel="stylesheet" type="text/css" href="CSS/buyer_private1.css">
+<link rel="stylesheet" type="text/css" href="CSS/seller_private_1_3.css">
 </head>
 <body>
 	<div id="wrap" style="width: 930px; margin: 0px auto;">
@@ -70,14 +79,16 @@
 					<thead>
 						<tr>
 							<th>상품명</th>
-							<th>개수</th>
 							<th>가격</th>
-							<th>확인여부</th>
 						</tr>
 					</thead>
 					<tbody>
+					<tr>
 					<%
 					%>
+					<td><%=pname %></td>
+					<td><%=price %></td>
+					</tr>
 					</tbody>
 				</table>
 				<%

@@ -12,7 +12,7 @@
 <head>
 <meta charset="UTF-8 http-equiv="Content-Type" content="text/html;">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/buyer_private2.css">
+<link rel="stylesheet" type="text/css" href="CSS/buyer_private2.css">
 </head>
 <script type="text/javascript">
 	function test(){
@@ -61,9 +61,9 @@
 						</tr>
 					</table>
 					<div id="btn">
-						<input type="submit" value="수정" class="btn1" /> 
-						<input type="button" value="취소" class="btn1" />
-						<input type="button" value="회원탈퇴" class="btn1" onclick="test()" />
+						<input type="submit" value="수정" class="btn" /> 
+						<input type="button" value="취소" class="btn" />
+						<input type="button" value="회원탈퇴" class="btn" onclick="test()" />
 					</div>
 				</div>
 			</form>

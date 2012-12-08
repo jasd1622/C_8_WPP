@@ -1,4 +1,4 @@
-#content { overflow:auto; margin:50px;}
+#content { overflow:auto; margin:50px;text-align:center;}
 .center_content{margin:0 auto;width:720px;margin:40px;}
 .txt{
 	width:53px;
@@ -16,4 +16,3 @@
 	border-right:0;
 }
 .center{margin:10px auto; }
-.center a{margin: 20px;}

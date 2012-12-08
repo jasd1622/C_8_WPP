@@ -20,13 +20,13 @@ function seller(){
 	<div id="wrap" style="width: 930px; margin: 0px auto;">
 		<jsp:include page="share/header.jsp" />
 		<div id="content">
-			<span class="head_content">
+			<span>
 				<h1>회원 종류</h1>
 			</span>
 			<div class="center_content">
-				<div class="center">
-				<input type="button" name="seller" value="판매자" onclick="seller()"/>
-				<input type="button" name="buyer" value="구매자" onclick="buyer()"/>
+				<div class="center" style="cursor:pointer">
+				<img src="IMG/sell.gif" onclick="seller()"/>
+				<img src="IMG/buy.gif" onclick="buyer()"/>
 				</div>
 			</div>
 		</div>

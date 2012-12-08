@@ -100,13 +100,13 @@
 					<input type="hidden" name="grade" value="0"/>
 					<h2>이용약관</h2><br/>
 					<div style="margin-bottom: 5px">
-						<textarea name="policy" cols="120" rows="5">aㄴ여하세요 저는 이은지입니다 우하하하하후하하하하하핳하우리는통합쿠폰제를실시합니다하하하으하하ㅏ흐아크크크ㅡㅋ캬캬ㅑ
+						<textarea name="policy" cols="120" rows="5">본 점 'PIZZA'는 통합 쿠폰제를 실시합니다. 약관에 동의 하셔야 회원가입이 가능합니다.
 					</textarea>
 					</div>
 					<input type="checkbox" name="agree" value="agree" /> 약관에 동의합니다.
 					<p class="center">
 					<div class="form-actions">
-						<input type="submit" class="btn btn-primary" value="가입" id="ga" />
+						<input type="submit" class="btn" value="가입" id="ga" />
 					</div>
 				</div>
 			</form>

@@ -26,7 +26,7 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<link rel="stylesheet" type="text/css" href="css/join.css">
+<link rel="stylesheet" type="text/css" href="CSS/join.css">
 </head>
 <script type="text/javascript">
 	function check(){
@@ -129,8 +129,8 @@
 					</div>
 					<input type="checkbox" name="agree" value="agree" /> 약관에 동의합니다.
 					<p class="center">
-					<div class="form-actions">
-						<input type="submit" class="btn btn-primary" value="가입" id="ga" onclick="register()" />
+					<div class="form-actions" style="text-align:center">
+						<input type="submit" class="btn" value="가입" id="ga" onclick="register()" />
 					</div>
 				</div>
 			</form>

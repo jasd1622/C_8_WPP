@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="buyer_private1.css">
+<link rel="stylesheet" type="text/css" href="CSS/buyer_private1.css">
 </head>
 <body>
 <div id="wrap" style="width:930px; margin:0px auto;">
