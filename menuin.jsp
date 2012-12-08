@@ -76,7 +76,7 @@
 		</tr>
 	</table>
 	<%} else { %>
-	<table class="t">
+	<table class="t" style="width:370px;height:400px;">
 		<tr>
 			<th>음료사진</th>
 		</tr>
@@ -85,9 +85,6 @@
 		</tr>
 		<tr>
 			<td><%=desc %></td>
-		</tr>
-		<tr>
-			<td><input type="button" value="장바구니"/></td>
 		</tr>
 	</table>
 	
