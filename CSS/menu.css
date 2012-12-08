@@ -1,16 +1,11 @@
 #content { overflow:auto; margin:50px;}
-.center_content{margin:0 auto;width:750px; }
+.center_content{margin:0 auto;width:720px; }
 
 .t{border: 1px solid #CCC;
 	border-collapse:collapse; 
 	border-spacing:20px;
 	width:720px;
 	text-align:center;
-}
-.t th{border: 1px solid #CCC;}
-.t li{text-align:center;}
-.li{
-	list-style: none; 
 }
 .t td{padding: 5px 5px 10px 5px; text-align: center; border: 1px solid #CCC;}
 #order{margin:40px 0 20px 0; }

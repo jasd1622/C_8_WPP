@@ -51,7 +51,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="menu.css" rel="stylesheet" type="text/css">
+<link href="CSS/menu.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div id="content">
@@ -64,21 +64,15 @@
 	<%
 		if(category.equals("p")){
 	%>
-	<table class="t">
+	<table class="t" style="width:370px;height:400px;">
 		<tr>
 			<th>피자사진</th>
 		</tr>
 		<tr>
-			<td><%=pname %> <%=price %>원</td>
-		</tr>
-		<tr>
-			<td>by <%=seller %></td>
+			<td><%=pname %> <%=price %>원 by <%=seller %></td>
 		</tr>
 		<tr>
 			<td><%=desc %></td>
-		</tr>
-		<tr>
-			<td><input type="button" value="장바구니"/></td>
 		</tr>
 	</table>
 	<%} else { %>
@@ -87,10 +81,7 @@
 			<th>음료사진</th>
 		</tr>
 		<tr>
-			<td><%=pname %> <%=price %>원</td>
-		</tr>
-		<tr>
-			<td>by <%=seller %></td>
+			<td><%=pname %> <%=price %>원 by <%=seller %></td>
 		</tr>
 		<tr>
 			<td><%=desc %></td>

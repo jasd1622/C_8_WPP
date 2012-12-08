@@ -12,7 +12,7 @@
 	ResultSet rs = null;
 
 	String dbUrl = "jdbc:mysql://localhost:3306/wp";
-	String dbUser = "root";
+	String dbUser = "jasd1622";
 	String dbPassword = "asd1622";
 	request.setCharacterEncoding("utf-8");
 	String id = request.getParameter("id");
@@ -54,25 +54,45 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/join.css">
 </head>
 <body>
-	<table border="1" style="margin:0 auto; text-align:center; width:230px ;height:60px; border-collapse:collapse; margin-top:30px;">
-		<tr><td>신청 ID : <%=id%></td></tr>
+	<%
+		if (id == null || id.trim().length() == 0) {
+	%>
+	<table border="1"
+		style="margin: 0 auto; text-align: center; width: 230px; height: 60px; border-collapse: collapse; margin-top: 30px;">
 		<tr>
-		<%
-			if (isExist) {
-		%>
-		<td>사용할수 없는 아이디입니다.</td>
-		<%
-			}
-			if (!isExist) {
-		%>
-		<td>사용 가능한 아이디입니다.</td>
-		<%=grade%>
-		<%
-			}
-		%>
+			<td>아이디를 입력해주세요.</td>
 		</tr>
 	</table>
+	<%
+		} else {
+	%>
+	<table border="1"
+		style="margin: 0 auto; text-align: center; width: 230px; height: 60px; border-collapse: collapse; margin-top: 30px;">
+		<tr>
+			<td>신청 ID : <%=id%></td>
+		</tr>
+		<tr>
+			<%
+				if (isExist) {
+			%>
+			<td>사용할수 없는 아이디입니다.</td>
+			<%
+				}
+					if (!isExist) {
+			%>
+			<td>사용 가능한 아이디입니다.</td>
+			<%
+				}
+			%>
+		</tr>
+	</table>
+	<%
+		}
+	%>
+	<input type="button" id="close" value="닫기"
+		onclick="window.open('about:blank', '_self').close()" />
 </body>
 </html>

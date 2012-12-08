@@ -19,16 +19,5 @@
 	session.setAttribute("session_item", items);
 	session.setAttribute("session_price", prices);
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv='Refersh' content='0; URL=basket_view.jsp'>
-<title></title>
-</head>
-<body>
-	<script>
-		alert('선택 항목이 장바구니에서 삭제 되었습니다.');
-		document.location.href = "basket_view.jsp";
-	</script>
-</body>
-</html>
+<%="<script>alert('선택 항목이 장바구니에서 삭제 되었습니다.')</script>" %>
+<%="<meta http-equiv='Refersh' content='0; URL=basket_view.jsp'>"%>

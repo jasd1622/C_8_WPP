@@ -29,8 +29,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="menu.css" rel="stylesheet" type="text/css">
-<link href="bootstrap.min.css" rel="stylesheet">
+<link href="CSS/menu.css" rel="stylesheet" type="text/css">
 </head>
 <script type="text/javascript">
 	function dc(value) {
@@ -81,10 +80,10 @@
 									name=rs.getString("name"); %>
 							<th>
 							<ul>
-							<li style="margin:10px"><a href="javascript:dc('<%=name %>');"><img src="img/pizza1.gif"></a></li>
+							<li style="margin:10px"><a href="javascript:dc('<%=name %>');"><img src="IMG/pizza1.gif"></a></li>
 								<li>피자명 : <%=rs.getString("name") %><br/></li>
 								<li>가격 : <%=rs.getString("price")%></li>
-								<li style="margin:5px"><a href="basket_view.jsp?name=<%=name %>&price=<%=rs.getString("price") %>" class="btn btn-danger">장바구니</a></li>
+								<li style="margin:5px"><a href="basket_view.jsp?name=<%=name %>&price=<%=rs.getString("price") %>" class="btn">장바구니</a></li>
 							</ul></th>
 							<%
 								num++;
@@ -99,7 +98,7 @@
 					</tbody>
 				</table>
 					</form>
-					<div class="pagination pagination-centered">
+					<div class="pagination" style="text-align:center;margin-top:10px">
 				<ul>
 					<%
 						// 페이지 네비게이션을 위한 준비
@@ -168,6 +167,7 @@
 						}
 					%>
 			</div>
+		</div>
 		</div>
 		<jsp:include page="share/footer.jsp"></jsp:include>
 	</div>

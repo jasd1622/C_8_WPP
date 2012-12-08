@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,10 +8,11 @@
 <link rel="stylesheet" type="text/css" href="seller_private_1_3.css">
 </head>
 <body>
-<div id="wrap" style="width:930px; margin:0px auto;">
-	<jsp:include page="share/header.jsp"/>
-		<div id="content" style="width:98%;	margin:0 auto;margin-top:50px;">
-			<jsp:include page="share/seller_nav.jsp"/>
+	<div id="wrap" style="width: 930px; margin: 0px auto;">
+		<jsp:include page="share/header.jsp"></jsp:include>
+		<div id="content"
+			style="width: 98%; margin: 0 auto; margin-top: 50px;">
+			<jsp:include page="share/seller_nav.jsp" />
 			<div id="main_con">
 				<table border="3" class="table1">
 					<thead>
@@ -27,19 +28,19 @@
 				</table>
 				<div id="select">
 					<form action="">
-						<input type="radio" name="select" value="day" class="select1"/><b>날짜별</b> 
-						<input type="radio" name="select" value="month" class="select1"/><b>월별</b>
+						<input type="radio" name="select" value="day" class="select1" /><b>날짜별</b>
+						<input type="radio" name="select" value="month" class="select1" /><b>월별</b>
 					</form>
 				</div>
-					<table border="3" class="table2">
-						<tr>
-							<th>합계</th>
-							<td colspan="4"></td>
-						</tr>
-					</table>
-				</div>				
+				<table border="3" class="table2">
+					<tr>
+						<th>합계</th>
+						<td colspan="4"></td>
+					</tr>
+				</table>
 			</div>
-	<jsp:include page="share/footer.jsp"/>
-</div>
+		</div>
+		<jsp:include page="share/footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>

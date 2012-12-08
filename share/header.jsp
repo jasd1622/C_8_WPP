@@ -5,20 +5,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="share/header.css" rel="stylesheet" type="text/css">
+<link href="CSS/header.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div id="log">
-		<a href="">로그인</a> |
-		<a href="">회원가입</a>
+	<%if(session.getAttribute("id")==null){ %>
+		<a href="log.jsp">로그인</a> |
+		<a href="join_sort.jsp">회원가입</a>
+		<%} else {%>
+		<a href="private1.jsp"><%=session.getAttribute("id") %></a>님 반갑습니다. |
+		<a href="logout.jsp">로그아웃</a>
+		<%} %>
 	</div>
 	<div id="top">
-		<div id="logo"><h1>
-			<img src="img/pz.gif" alt="로고"/>
+		<div class="plogo"><h1>
+			<img src="IMG/pz.gif" alt="로고"/>
 		</h1></div>
 		<form action="">
 			<input type="text" name="searchbox" id="searchbox"/>
-			<input type="submit" value="Search" id="searchbt"/>
+			<input type="submit" value="Search" class="btn"/>
 		</form>
 		</div>
 		<div id="header">

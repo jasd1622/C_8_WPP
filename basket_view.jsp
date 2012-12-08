@@ -11,13 +11,16 @@
 		stItem=new StringTokenizer(items,"|");
 		stPrice=new StringTokenizer(prices,"|");
 	}
+	List<String> buylist=new ArrayList<String>();
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title></title>
-<link href="basket.css" rel="stylesheet" type="text/css">
+<link href="CSS/basket.css" rel="stylesheet" type="text/css">
+<link href="CSS/etc.css" rel="stylesheet" type="text/css">
+<link href="CSS/basket.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="wrap" style="width:930px; margin:0px auto;">
@@ -25,14 +28,11 @@
 	<div id="content">	
 		<div class="center_content">
 		<table class="t">
-		<thead>
 		<tr>
 				<th>제품명</th>
 				<th>금액</th>
 				<th>삭제하기</th>
-		</tr>
-		</thead>
-		<tbody>
+			</tr>
 			<%if(items!=null && items.length()>0){ 
 				while(stItem.hasMoreTokens()){
 					String itemTemp = stItem.nextToken();
@@ -49,10 +49,7 @@
 			<%}}else{ %>
 			<tr><td colspan="3">선택 목록이 존재하지 않습니다</td></tr>
 			<%} %>
-			</tbody>
-			<tfoot>
 			<tr><td colspan="3">금액합계: <%=total %></td></tr>
-			</tfoot>
 		</table>
 		
 		<table class="t">
@@ -67,7 +64,7 @@
 					<td>O</td>
 				</tr>
 		</table>
-		<center><a href="">돌아가기</a>&nbsp&nbsp&nbsp<a href="">구매</a></center>		
+		<center><a href="" class="btn">구매</a>&nbsp&nbsp&nbsp<a href="" class="btn">쿠폰사용</a>&nbsp&nbsp&nbsp<a href="" class="btn">돌아가기</a></center>		
 		</div>		
 	</div>
 	<jsp:include page="share/footer.jsp"/>
