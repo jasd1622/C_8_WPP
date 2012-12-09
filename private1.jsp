@@ -6,9 +6,9 @@
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 
-	String dbUrl = "jdbc:mysql://localhost:3306/wp";
-	String dbUser = "jasd1622";
-	String dbPassword = "asd1622";
+	String dbUrl = "jdbc:mysql://localhost:3306/wp_test";
+	String dbUser = "slaej1228";
+	String dbPassword = "tiger";
 	int order_num=0;
 	int menu_num=0;
 	String pname=request.getParameter("name");
@@ -27,28 +27,24 @@
 		if (rs.next()) {
 			coupons = rs.getInt("count");
 		}
-		stmt=conn.prepareStatement("SELECT * FROM orders WHERE user_id=?");
-		stmt.setString(1,id);
-		rs=stmt.executeQuery();
-		if(rs.next()){
-			order_num=rs.getInt("id");
-		}
-		stmt=conn.prepareStatement("SELECT * FROM menus WHERE name=?");
-		stmt.setString(1,pname);
-		rs=stmt.executeQuery();
-		if(rs.next()){
-			price=rs.getString("price");
-			price=rs.getString("num");
-		}
-		if(order_num!=0){
-			stmt=conn.prepareStatement("SELECT * FROM order_menus WHERE order_id=?");
-			stmt.setInt(1,order_num);
-			rs=stmt.executeQuery();
-			if(rs.next()){
-				menu_num=rs.getInt("menu_id");
+	} catch (SQLException e) {}
+	 finally {
+		if (rs != null)
+			try {
+				rs.close();
+			} catch (SQLException e) {
 			}
-		}
-	} catch (SQLException e) {
+		if (stmt != null)
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+			}
+		if (conn != null)
+			try {
+				conn.close();
+			} catch (SQLException e) {
+			}
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -83,12 +79,6 @@
 						</tr>
 					</thead>
 					<tbody>
-					<tr>
-					<%
-					%>
-					<td><%=pname %></td>
-					<td><%=price %></td>
-					</tr>
 					</tbody>
 				</table>
 				<%
@@ -133,25 +123,6 @@
 				%>
 			</div>
 		</div>
-		<%
-			} finally {
-				if (rs != null)
-					try {
-						rs.close();
-					} catch (SQLException e) {
-					}
-				if (stmt != null)
-					try {
-						stmt.close();
-					} catch (SQLException e) {
-					}
-				if (conn != null)
-					try {
-						conn.close();
-					} catch (SQLException e) {
-					}
-			}
-		%>
 		<jsp:include page="share/footer.jsp"></jsp:include>
 	</div>
 </body>

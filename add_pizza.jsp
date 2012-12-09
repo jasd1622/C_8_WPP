@@ -4,17 +4,13 @@
 <%
 	String errorMsg = null;
 
-	String actionUrl = "register.jsp";
-	String actionUrl2 = "checkid.jsp";
+	String actionUrl = "re2.jsp";
 
 	// 사용자 정보를 위한 변수 초기화
-	String id;					//int type
-	String userid = "";
-	String name = "";
-	String price="";			//int type
-	String description = "";
-	String category = "";
-
+	String userid = request.getParameter("name");
+	String pname = "";
+	String price="";			
+	String desc = "";
 %>
 <!DOCTYPE html>
 <html>
@@ -25,9 +21,6 @@
 <link rel="stylesheet" type="text/css" href="CSS/seller_private_1_3.css">
 </head>
 <script type="text/javascript">
-	function check(){
-		window.open("checkid.jsp?id="+document.memberform.name.value,"check","width=140px,height=150px,top=250px,left=600px");
-	}
 </script>
 <body>
 	<div id="wrap" style="width: 930px; margin: 0px auto;">
@@ -41,33 +34,21 @@
 				<div class="center_content">
 					<table class="t">
 					<tr>	
-						<th class="control-th" for="name">피자 이름</th>
-						<td class="controls">
-							<input type="text" value="<%=name%>" name="name" onclick="check()"/>
+						<th >피자 이름</th>
+						<td >
+							<input type="text" name="pname">
 						</td>
 					</tr>
 					<tr>
-						<th class="control-th" for="price">피자 가격</th>
-						<td class="controls">
-							<input type="text" value="<%=price%>"  name="name" onclick="check()"/>
+						<th >피자 가격</th>
+						<td>
+							<input type="text" name="price" >
 						</td>
 					</tr>
 					<tr>
-						<th class="control-th" for="category">카테고리</th>
-						<td class="controls">
-							<input type="text" value="<%=category%>"  name="name" onclick="check()"/>
-						</td>
-					</tr>
-					<tr>
-						<th class="control-th" for="image">이미지</th>
-						<td class="controls">
-							<input type="file" name="image" size="40">
-						</td>
-					</tr>
-					<tr>
-						<th class="control-th" for="description">피자 설명</th>
-						<td class="controls">
-							<textarea rows="15" cols="70" name="description"></textarea>
+						<th>피자 설명</th>
+						<td>
+							<textarea rows="15" cols="70" name="desc"></textarea>
 						</td>
 					</tr>
 					</table>
