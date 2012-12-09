@@ -3,19 +3,69 @@
 	import="org.apache.commons.lang3.StringUtils"%>
 <%
 	String errorMsg = null;
+	String[] category = {"피자", "사이드 메뉴"};
 
-	String actionUrl = "register.jsp";
-	String actionUrl2 = "checkid.jsp";
+	String actionUrl;
+	
+	// DB 접속을 위한 준비
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
 
-	// 사용자 정보를 위한 변수 초기화
-	String id;					//int type
-	String userid = "";
+	String dbUrl = "jdbc:mysql://localhost:3306/web2012";
+	String dbUser = "web";
+	String dbPassword = "asdf";
+
+	// 사용자 정보
+	String categorys = "";
+	String user_id = "";
 	String name = "";
-	String price;			//int type
 	String description = "";
-	String category = "";
+	String price = "";
+	
+	
+	// Request로 ID가 있는지 확인
+	int id = 0;
+	try {
+		id = Integer.parseInt(request.getParameter("id"));
+	} catch (Exception e) {}
 
-%>
+	if (id > 0) {
+		// Request에 id가 있으면 update모드라 가정
+		actionUrl = "upload_pizza.jsp";
+		try {
+		    Class.forName("com.mysql.jdbc.Driver");
+
+		    // DB 접속
+			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+
+	 		// 질의 준비
+			stmt = conn.prepareStatement("SELECT * FROM menus WHERE id = ?");
+			stmt.setInt(1, id);
+			
+			// 수행
+	 		rs = stmt.executeQuery();
+			
+			if (rs.next()) {
+				user_id = rs.getString("userid");
+				name = rs.getString("name");
+				categorys = rs.getString("categorys");
+				description = rs.getString("description");
+				price = rs.getString("price");
+			}
+		}catch (SQLException e) {
+			errorMsg = "SQL 에러: " + e.getMessage();
+		} finally {
+			// 무슨 일이 있어도 리소스를 제대로 종료
+			if (rs != null) try{rs.close();} catch(SQLException e) {}
+			if (stmt != null) try{stmt.close();} catch(SQLException e) {}
+			if (conn != null) try{conn.close();} catch(SQLException e) {}
+		}
+	} else {
+		actionUrl = "upload_pizza.jsp";
+	}
+%>    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,8 +81,16 @@
 <body>
 	<div id="wrap" style="width: 930px; margin: 0px auto;">
 		<jsp:include page="share/header.jsp"></jsp:include>
+		
+		 <div class="container">
+		 <%
+		 if (errorMsg != null && errorMsg.length() > 0 ) {
+				// SQL 에러의 경우 에러 메시지 출력
+				out.print("<div class='alert'>" + errorMsg + "</div>");
+		 }
+		 %>
 		<div id="content">
-			<form name="add_pizza" class="form-horizontal" action="<%=actionUrl%>" method="post">
+			<form name="add_pizza" class="form-horizontal" action="<%=actionUrl%>" method="post" enctype="multipart/form-data">
 				<div class="head_content">
 					<h1>피자 추가</h1><br/>
 				</div>
@@ -40,34 +98,39 @@
 					<div class="control-group">
 						<label class="control-label" for="name">피자 이름</label>
 						<div class="controls">
-							<input type="text" value="<%=name%>" name="name" onclick="check()"/>
+							<input type="text" name="name" onclick="check()"/>
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="price">피자 가격</label>
 						<div class="controls">
-							<input type="text" value="<%=price%>"  name="name" onclick="check()"/>
+							<input type="text" name="price" onclick="check()"/>원
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="category">카테고리</label>
 						<div class="controls">
-							<input type="text" value="<%=category%>"  name="name" onclick="check()"/>
+							<select name="category">
+								<% 
+								for(String MenuCate: category) {
+									out.print("<option");
+									if (MenuCate.equals(categorys)) {
+										out.print(" selected");
+									}
+									out.println(">"+MenuCate+"</option>");	
+								}
+								%>
+							</select>
 						</div>
 					</div>
-					<div class="control-group">
-						<label class="control-label" for="image">이미지</label>
-						<div class="controls">
-							<input type="file" name="image" size="40">
-						</div>
-					</div>
+	
 					<div class="control-group">
 						<label class="control-label" for="description">피자 설명</label>
 						<div class="controls">
-							<textarea rows="7" cols="7" name="description"></textarea>
+							<textarea rows="7" cols="40" name="description"></textarea>
 						</div>
 					</div>
-					<input type="hidden" name="grade" value="0"/>
+					<input type="hidden" name="grade" value="1"/>
 					<p class="center">
 					<div class="form-actions">
 						<input type="submit" class="btn btn-primary" value="추가" id="add" />
@@ -76,6 +139,7 @@
 			</form>
 			<jsp:include page="share/footer.jsp"></jsp:include>
 		</div>
+	</div>
 	</div>
 </body>
 </html>
