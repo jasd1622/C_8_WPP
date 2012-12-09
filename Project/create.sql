@@ -20,8 +20,7 @@ CREATE TABLE menus (
 	name VARCHAR(30),
 	price int,
 	description text,
-	category VARCHAR(30),
-	img MEDIUMBLOB
+	category VARCHAR(30)
 );
 
 CREATE TABLE coupons (
