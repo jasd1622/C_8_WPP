@@ -19,7 +19,7 @@
 	</div>
 	<div id="top">
 		<div class="plogo"><h1>
-			<img src="IMG/pz.gif" alt="로고"/>
+			<a href="Main.jsp"><img src="IMG/pz.gif" alt="로고"/></a>
 		</h1></div>
 		<form action="">
 			<input type="text" name="searchbox" id="searchbox"/>
@@ -29,9 +29,9 @@
 		<div id="header">
 			<div id="navbar">
 				<ul>
-					<li><a href="">메뉴판</a></li>
-					<li><a href="">장바구니</a></li>
-					<li><a href="postscript1.html">고객의 소리</a></li>
+					<li><a href="menu.jsp">피자메뉴</a></li>
+					<li><a href="side.jsp">사이드메뉴</a></li>
+					<li><a href="basket_view.jsp">장바구니</a></li>
 				</ul>
 			</div>
 		</div>

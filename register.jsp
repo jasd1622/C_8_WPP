@@ -7,9 +7,9 @@
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 
-	String dbUrl = "jdbc:mysql://localhost:3306/wp";
-	String dbUser = "jasd1622";
-	String dbPassword = "asd1622";
+	String dbUrl = "jdbc:mysql://localhost:3306/wp_test";
+	String dbUser = "slaej1228";
+	String dbPassword = "tiger";
 
 	request.setCharacterEncoding("utf-8");
 	String userid = request.getParameter("userid");

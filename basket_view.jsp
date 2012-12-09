@@ -1,15 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.*" import="java.sql.*"
-	import="org.apache.commons.lang3.StringUtils"%>
+	import="org.apache.commons.lang3.StringUtils"
+	import="java.util.ArrayList"%>
 <%
 	int total = 0;
-	//List<String> buylist = new ArrayList<String>();
 	String[] buylist=null;
 	List<Integer> pricelist = new ArrayList<Integer>();
 	buylist=request.getParameterValues("buylist");
+	List<String> errorMsgs = new ArrayList<String>();
 	int i = 0;
 	int coupons=0;
-
+	int select=0;
+	String name="";
+	//String name=(String)session.getAttribute("name");
+	//String price=(String)session.getAttribute("price");
+	StringTokenizer Name=null;
+	StringTokenizer Price=null;
+	ArrayList list=(ArrayList)session.getAttribute("productlist");
 	Connection conn = null;
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
@@ -18,6 +25,12 @@
 	String dbUrl = "jdbc:mysql://localhost:3306/wp";
 	String dbUser = "jasd1622";
 	String dbPassword = "asd1622";
+	
+	if(session.getAttribute("id")==null){
+		select=0;
+		errorMsgs.add("로그인");
+	}
+	if(errorMsgs.size()==0){
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
@@ -27,16 +40,15 @@
 		if(rs.next()){
 		coupons=rs.getInt("count");
 		}
-
-		for (i = 0;buylist[i]!=null; i++) {
-	stmt = conn
-			.prepareStatement("SELECT * FROM menus WHERE name=?");
-	stmt.setString(1, buylist[i]);
-	rs = stmt.executeQuery();
-	if (rs.next()) {
-		pricelist.add(rs.getInt("price"));
-	}
+		for(i=0;i<list.size();i++){
+	stmt=conn.prepareStatement("SELECT * FROM menus WHERE name=?");
+	stmt.setString(1,(String)list.get(i));
+		
+		rs=stmt.executeQuery();
+		if(rs.next()){
+	pricelist.add(rs.getInt("price"));
 		}
+	}
 	} catch (SQLException e) {
 	} finally {
 		if (rs != null)
@@ -55,6 +67,7 @@
 	} catch (SQLException e) {
 	}
 	}
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -62,14 +75,26 @@
 <meta charset="UTF-8">
 <title></title>
 <link href="CSS/basket.css" rel="stylesheet" type="text/css">
-<link href="css/etc.css" rel="stylesheet" type="text/css">
-<link href="css/basket.css" rel="stylesheet" type="text/css">
+<link href="CSS/etc.css" rel="stylesheet" type="text/css">
+<link href="CSS/basket.css" rel="stylesheet" type="text/css">
 </head>
 <script type="text/javascript">
+	function pur() {
+		session.setAttribute("productlist", list);
+	}
 </script>
 <body>
 	<div id="wrap" style="width: 930px; margin: 0px auto;">
 		<jsp:include page="share/header.jsp" />
+		<%
+			if(errorMsgs.size()>0){
+				if(select==0){
+		%>
+		<script>
+			alert("로그인해주세요.");
+			document.location.href = "log.jsp";
+		</script>
+		<%}} %>
 		<div id="content">
 			<div class="center_content">
 				<table class="t">
@@ -82,26 +107,30 @@
 					</thead>
 					<tbody>
 						<%
-							i = 0;
-							while (true) {
-								if (buylist[i]!=null) {
+							if (list == null) {
 						%>
 						<tr>
-							<td><%=buylist[i]%></td>
-							<td><%=pricelist.get(i)%></td>
-							<td><input type="checkbox" value="del" /></td>
+							<td colspan="3">장바구니가 비어있습니다.</td>
 						</tr>
 						<%
-							i++;
-								} else {
-									break;
-								}
+							} else {
+										for (i = 0; i < list.size(); i++) {
+											name = (String) list.get(i);
+						%>
+						<tr>
+							<td><%=list.get(i)%></td>
+							<td><%=pricelist.get(i)%></td>
+							<td><a href="basket_del.jsp?name="
+								+<%=(String) list.get(i)%>>삭제</a></td>
+						</tr>
+						<%
 							}
 						%>
-
 					</tbody>
 				</table>
-
+				<%
+							}
+				%>
 				<table class="t">
 					<tr>
 						<th>쿠폰이름</th>
@@ -125,9 +154,8 @@
 					</tr>
 				</table>
 				<center>
-					<a href="" class="btn btn-primary">구매</a>&nbsp&nbsp&nbsp <a href="" class="btn btn-primary">삭제</a>
-					&nbsp&nbsp&nbsp 
-						<a href="menu.jsp"class="btn btn-primary">돌아가기</a>
+					<a href="purchase.jsp" class="btn btn-primary" onclick="pur()">구매</a>
+					<a href="menu.jsp" class="btn btn-primary">메뉴로</a>
 				</center>
 			</div>
 		</div>

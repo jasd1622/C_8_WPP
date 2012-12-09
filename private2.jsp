@@ -18,9 +18,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8 http-equiv=" Content-Type" content="text/html;">
+<meta charset="UTF-8" http-equiv=" Content-Type" content="text/html;">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/buyer_private2.css">
+<link rel="stylesheet" type="text/css" href="CSS/buyer_private2.css">
 </head>
 <script type="text/javascript">
 	function del() {
@@ -39,7 +39,11 @@
 		<jsp:include page="share/header.jsp"></jsp:include>
 		<div id="content"
 			style="width: 98%; margin: 0 auto; margin-top: 50px;">
+			<% if(session.getAttribute("grade").equals("S")){%>
+			<jsp:include page="share/seller_nav.jsp" />
+			<%} else{ %>
 			<jsp:include page="share/buyer_nav.jsp" />
+			<%} %>
 			<form action="<%=actionUrl%>" method="post">
 				<div id="main_con">
 					<table border="3" class="table1">
@@ -125,8 +129,8 @@
 						</tr>
 					</table>
 					<div id="btn">
-						<input type="submit" value="수정" class="btn1" /> <input
-							type="button" value="회원탈퇴" class="btn1" onclick="del()" />
+						<input type="submit" value="수정" class="btn" /> <input
+							type="button" value="회원탈퇴" class="btn" onclick="del()" />
 					</div>
 				</div>
 			</form>

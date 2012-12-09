@@ -13,6 +13,7 @@
 	int number = 0;
 	int num = 0;
 	String name="";
+	String category="";
 
 	try {
 		pageNo = Integer.parseInt(request.getParameter("page"));
@@ -40,9 +41,7 @@
 <body>
 	<div id="wrap" style="width: 930px; margin: 0px auto;">
 		<jsp:include page="share/header.jsp"></jsp:include>
-
 		<%
-		
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
 
@@ -50,7 +49,7 @@
 				conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
 
 				stmt = conn.createStatement();
-				rs = stmt.executeQuery("SELECT COUNT(*) FROM menus");
+				rs = stmt.executeQuery("SELECT COUNT(*) FROM menus WHERE category='p'");
 				rs.next();
 				numItems = rs.getInt(1);
 				numPages = (int) Math.ceil((double) numItems
@@ -76,6 +75,8 @@
 						<tr>
 							<%
 								while (number < numInRow && rs.next()) {
+									category=rs.getString("category");
+									if(category.equals("p")){
 									name=rs.getString("name"); %>
 							<th>
 							<ul>
@@ -87,7 +88,7 @@
 							<%
 								num++;
 											number++;
-										}
+										}}
 							%>
 						</tr>
 						<%
